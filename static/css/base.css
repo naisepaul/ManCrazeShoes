@@ -78,6 +78,7 @@ a.category-badge > span.badge:hover {
 }
 
 .btt-button {
+    background-color: aquamarine;
     height: 42px;
     width: 42px;
     position: fixed;
