@@ -22,6 +22,11 @@
 
     {% block extra_css %}
     {% endblock %}
+    <!-- favicon -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dmhdrvehj/image/upload/v1714570470/apple-touch-icon_qbzsfv.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dmhdrvehj/image/upload/v1714570470/favicon-32x32_fdusqz.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dmhdrvehj/image/upload/v1714570470/favicon-16x16_h7pbfy.png">
 
     {% block corejs %}
         <!-- font awesome script -->
@@ -39,10 +44,14 @@
   <body>
     <header class="container-fluid fixed-top">
       <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
-          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-              <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                  <h2 class="logo-font text-black my-0"><strong>ManCrazeShoes</strong></h2>
-              </a>
+          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">                      -->
+            <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                <img class="mcs_logo"
+                src="https://res.cloudinary.com/dmhdrvehj/image/upload/v1714570470/favicon-32x32_fdusqz.png" alt="mcs logo">
+                <h2 class="logo-font text-black my-0" style="display: inline-block;">
+                    <strong>ManCrazeShoes</strong>
+                </h2>
+            </a>
           </div>
           <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
               <form method="GET" action="{% url 'products' %}">
