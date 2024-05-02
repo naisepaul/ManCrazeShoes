@@ -32,10 +32,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu110.gitpod.io','.herokuapp.com']
-# ALLOWED_HOSTS = ['mancrazeshoes.herokuapp.com' , 'localhost']
+# ALLOWED_HOSTS = ['8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu110.gitpod.io']
 
 CSRF_TRUSTED_ORIGINS =['https://8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu110.gitpod.io']
-
+                        
 # Application definition
 
 INSTALLED_APPS = [
