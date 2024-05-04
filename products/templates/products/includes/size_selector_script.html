@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        var circles = document.querySelectorAll(".selectable");
+
+        circles.forEach(function(circle) {
+            circle.addEventListener("click", function() {
+                var value = this.getAttribute("data-value");
+                document.getElementById("selectedSize").value = value;
+                circles.forEach(function(circle) {
+                    circle.classList.remove("selected");
+                });
+                this.classList.add("selected");
+            });
+        });
+    });
+</script>
