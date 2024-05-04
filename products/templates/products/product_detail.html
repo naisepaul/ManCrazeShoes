@@ -40,13 +40,13 @@
                                         <p class="mt-3"><strong>Size:</strong></p>  
                                         <!-- dafault value for the input -->
                                         <input type="text" id="selectedSize" class="form-control" name="size" readonly
-                                        value="{% if productvariant %}{{ productvariant.2.size }}{% endif %}"> 
-                                        
+                                        value="{% if productvariant %}{{ productvariant.2.size }}{% endif %}">                                         
                                     </div>                                    
                                     <div class="circle-container">  
                                         {% for variant in productvariant %}
-                                            <span id="stock_{{ variant.size }}">{{ variant.stock }}</span>
-                                            <div class="circle selectable" name="size" data-value="{{ variant.size }}">{{ variant.size }}</div>                                            
+                                           <span id="stock_{{ variant.size }}">{{ variant.stock }}</span>
+                                           <div class="circle selectable" name="size" data-value="{{ variant.size }}">{{ variant.size }}</div>                                                                                     
+                                                        
                                         {% endfor %}                                         
                                     </div>                                                                                                                
                                 </div>
