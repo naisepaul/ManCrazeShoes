@@ -38,14 +38,15 @@
                                 <div class="form-group w-70">
                                     <div class="size-text">
                                         <p class="mt-3"><strong>Size:</strong></p>  
-                                        <input type="text" id="selectedSize" class="form-control" name="size" readonly>
-                                    </div>
+                                        <input type="text" id="selectedSize" class="form-control" value="{% if productvariant %}{{ productvariant.2.size }}{% endif %}"
+                                        name="size" readonly>
+                                    </div>                                    
                                     <div class="circle-container">  
-                                        {% for variant in productvariant %}   
-                                            <span id="stock_{{ variant.size }}">{{ variant.stock }}</span>                                         
+                                        {% for variant in productvariant %}
+                                            <span id="stock_{{ variant.size }}">{{ variant.stock }}</span>
                                             <div class="circle selectable" name="size" data-value="{{ variant.size }}">{{ variant.size }}</div>                                            
                                         {% endfor %}                                         
-                                    </div>                                                                       
+                                    </div>                                                                                                                
                                 </div>
                             </div> 
                             
