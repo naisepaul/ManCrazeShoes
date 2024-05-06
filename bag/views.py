@@ -14,13 +14,13 @@ def add_to_bag(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
 
     product = get_object_or_404(Product, pk=item_id)
-    # productvariant = ProductVariant.objects.filter(product=product)
+    productvariant = ProductVariant.objects.filter(product=product)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = request.POST.get('size')   
             
     bag = request.session.get('bag', {})
-   
+      
     if size:
         if item_id in list(bag.keys()):
             if size in bag[item_id]['items_by_size'].keys():
@@ -38,20 +38,21 @@ def add_to_bag(request, item_id):
         else:
             bag[item_id] = quantity
             messages.success(request, f'Added {product.name} to your bag')
-
-    request.session['bag'] = bag
+    
+    request.session['bag'] = bag            
     return redirect(redirect_url)
 
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
-
+    
     quantity = int(request.POST.get('quantity'))
-    size = request.POST.get('size')    
-    bag = request.session.get('bag', {})
+    size = request.POST.get('size') 
+    bag = request.session.get('bag', {})  
    
     if size:
         if quantity > 0:            
             bag[item_id]['items_by_size'][size] = quantity
+            
         else:
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
@@ -61,8 +62,8 @@ def adjust_bag(request, item_id):
             bag[item_id] = quantity
         else:
             bag.pop(item_id)
-
-    request.session['bag'] = bag
+    
+    request.session['bag'] = bag    
     return redirect(reverse('view_bag'))   
 
 def remove_from_bag(request, item_id):
