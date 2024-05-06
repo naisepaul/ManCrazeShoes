@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col">
                 {% if bag_items %}
-                    <div class="table-responsive rounded">
+                    <div class="table-responsive rounded">          
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
                                 <tr>
@@ -35,14 +35,15 @@
                                 </tr>
                             </thead>
 
-                            {% for item in bag_items %}
+                            {% for item in bag_items %}                                   
                                 <tr>
                                     <td class="p-3 w-25">
                                         <img class="img-fluid rounded" src="{{ item.product.image.url }}">
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>                                        
-                                        <p class="my-0"><strong>Size: </strong>{{ item.size }}</p>
+                                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>  
+                                        <p class="my-0" name="size"><strong>Size: </strong>{{ item.size }}</p>
+                                        
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.product.price }}</p>
@@ -71,7 +72,7 @@
                                                                 <i class="fas fa-plus fa-sm"></i>
                                                             </span>
                                                         </button>
-                                                    </div>                                                    
+                                                    </div>                                                                                                      
                                                 </div>
                                             </div>
                                         </form>
@@ -79,8 +80,7 @@
                                         <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                                        <!-- <p class="my-0">€{{ item.product.price }}</p> -->
+                                        <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>                                        
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -132,4 +132,5 @@
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 {% include 'bag/includes/update_remove_script.html' %}
+
 {% endblock %}
