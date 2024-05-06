@@ -126,11 +126,11 @@
       </div>
     </header>
 
-
     {% if messages %}
         <div class="message-container">
-            {% include 'includes/toasts/toast_success.html' %}
-
+            {% for message in messages %}
+                {% include 'includes/toasts/toast_success.html' %}
+            {% endfor %}
         </div>
     {% endif %}
 
