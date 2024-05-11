@@ -1,21 +1,45 @@
 {% extends "account/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+{% block inner_content %}
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<div class="login-container">
+  <div class="login-box">
+    <h2 class="login-heading">SIGN UP</h2>
+    <form class="signup mt-3" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+      <div class="form-floating mb-4">
+        {{ field|add_class:'form-control'|attr:'placeholder:'|attr:'required:' }}
+        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+        {% for error in field.errors %}
+        <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <!-- Catching general form errors  -->
+      {% if form.non_field_errors %}
+      <div class="alert alert-block alert-danger">
+        <span class="text-danger form-error"> {{ form.non_field_errors  }}</span>
+      </div>
+      {% endif %}
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
-
+      <div class="row mb-4">
+        <div class="col">
+          <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+        </div>
+      </div>
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

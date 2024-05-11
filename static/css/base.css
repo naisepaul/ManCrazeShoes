@@ -204,6 +204,34 @@ a.category-badge > span.badge:hover {
     overflow-y: auto;
 }
 
+/* Login form */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the container fill the entire viewport height */
+  }
+  
+  .login-box {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-heading {
+    text-align: center;
+  }
+  
+  .login-form {
+    margin-bottom: 20px;
+  }
+  
+  .login-links {
+    text-align: center;
+  }
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
