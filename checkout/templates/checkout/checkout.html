@@ -3,6 +3,18 @@
 {% load bag_tools %}
 {% load widget_tweaks %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}    
     <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
         <!-- Title Section -->
