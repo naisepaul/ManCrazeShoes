@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
-{% block page_header %}
+<!-- {% block page_header %}
     <div class="container header-container">
         <div class="row">
             <div class="col"></div>
         </div>
     </div>
-{% endblock %}
+{% endblock %} -->
 
 {% block content %}    
 <div class="container-fluid ib-container bg-ib-white text-ib-dark px-md-4 py-4 py-md-5 font-body">
@@ -20,79 +20,148 @@
     <!--Title Section -->
     <div class="row">
         <div class="col">
-            <h1 class="font-title weight-bold section-title-lrg mb-2">MY PROFILE</h1>
+            <h1 class="font-title weight-bold section-title-lrg mb-2">{{ user.username }} 's Profile</h1>
             <hr>
         </div>
     </div>
 
     <div class="row gx-5 font-body">
 
-        <!-- Profile Info Form -->
         <div class="col-12 col-lg-6 mt-2 mt-lg-0 mb-4 font-body">
             <div class="login-box1">
                 <!-- Form -->
                 <form action="{% url 'profile' %}" method="POST" id="profile-update-form" class="form-as-p">
                     {% csrf_token %}
-
-                    <div class="weight-semibold d-flex justify-content-end">
-
+        
+                    <div class="weight-semibold d-flex justify-content-start">
+        
                         <!-- Link to change password -->
-                        <a class="weight-semibold text-blue text-decoration-none text-link-blue float-end d-inline me-3" href="{% url 'account_email' %}">Manage Email</a>
-    
+                        <a class="weight-semibold text-blue text-decoration-none text-link-blue d-inline me-3" href="{% url 'account_email' %}">Manage Email</a>
+        
                         <!-- Link to manage email -->
-                        <a class="weight-semibold text-blue text-decoration-none text-link-blue float-end d-inline" href="{% url 'account_change_password' %}">Change Password</a>
+                        <a class="weight-semibold text-blue text-decoration-none text-link-blue d-inline" href="{% url 'account_change_password' %}">Change Password</a>
                     </div>
-
+        
                     <p class="mt-0 mb-3 mt-4 weight-semibold subtitle text-dark-grey">MY DEFAULT DELIVERY INFO</p>
-
-                    {{ form.default_street_address1|attr:"aria-label:Street Address 1" }}
-                    {% for error in form.default_street_address1.errors  %}
-                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                    {% endfor %}
-
-                    {{ form.default_street_address2|attr:"aria-label:Street Address 2" }}
-                    {% for error in form.default_street_address2.errors  %}
-                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                    {% endfor %}
-
-                    {{ form.default_town_or_city|attr:"aria-label:Town or City" }}
-                    {% for error in form.default_town_or_city.errors  %}
-                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                    {% endfor %}
+        
+                    <div class="form-group">
+                        {{ form.default_street_address1|attr:"aria-label:Street Address 1" }}
+                        {% for error in form.default_street_address1.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group">
+                        {{ form.default_street_address2|attr:"aria-label:Street Address 2" }}
+                        {% for error in form.default_street_address2.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group">
+                        {{ form.default_town_or_city|attr:"aria-label:Town or City" }}
+                        {% for error in form.default_town_or_city.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+                    </div>
                     
-                    {{ form.default_county|attr:"aria-label:County" }}
-                    {% for error in form.default_county.errors  %}
-                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                    {% endfor %}
-
-                    {{ form.default_postcode|attr:"aria-label:Postcode" }}
-                    {% for error in form.default_postcode.errors  %}
-                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                    {% endfor %}
-
-                    {{ form.default_country|attr:"aria-label:Country" }}
-                    {% for error in form.default_country.errors  %}
-                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                    {% endfor %}
-
-                    {{ form.default_phone_number|attr:"aria-label:Phone Number" }}
-                    {% for error in form.default_phone_number.errors  %}
-                        <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                    {% endfor %}
-
+                    <div class="form-group">
+                        {{ form.default_county|attr:"aria-label:County" }}
+                        {% for error in form.default_county.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group">
+                        {{ form.default_postcode|attr:"aria-label:Postcode" }}
+                        {% for error in form.default_postcode.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="form-group">
+                        {{ form.default_country|attr:"aria-label:Country" }}
+                        {% for error in form.default_country.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+                    </div>
+                            
+                    <div class="form-group">
+                        {{ form.default_phone_number|attr:"aria-label:Phone Number" }}
+                        {% for error in form.default_phone_number.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %}
+                    </div>
+        
                     {% if form.errors %}
                         {% for error in form.non_field_errors %}
                             <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
                         {% endfor %}
                     {% endif %}
-
+        
                     <!-- Update Button -->
-                    <button id="submit-button" class=" mt-3 ib-button ib-button-yellow text-decoration-none text-dark-grey font-title weight-bold float-end shadow-sm">
+                    <button id="submit-button" class="mt-3 ib-button ib-button-yellow text-decoration-none text-dark-grey font-title weight-bold float-end shadow-sm">
                         UPDATE
                     </button>
                 </form>
             </div>            
+        </div>      
+        
+        <!-- Order History -->
+        <div class="col-12 col-lg-6">
+            <p class="mt-0 mb-3 mt-sm-3 subtitle weight-semibold text-dark-grey">MY ORDER HISTORY</p>
+
+            <div class="table-responsive order-history mt-3">
+                <table class="table table-borderless font-body">
+                    <thead>
+                        <tr class="small-para-text">
+                            <th scope="col" class="bg-yellow-light weight-semibold">Order</th>
+                            <th scope="col" class="bg-yellow-light weight-semibold">Date</th>
+                            <th scope="col" class="bg-yellow-light weight-semibold">Item</th>
+                            <th scope="col" class="bg-yellow-light weight-semibold text-end">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% if orders|length > 0 %}
+                            {% for order in orders %}
+                                <!-- Order -->
+                                <tr class="bag-item-row small-para-text">
+                                    <td class="py-2 weight-semibold">
+                                        <a href="{% url 'order_history' order.order_number %}"
+                                        title="{{ order.order_number }}" class="text-decoration-none text-blue">
+                                            {{ order.order_number|truncatechars:6 }}
+                                        </a>
+                                    </td>
+                                    <td class="py-2">{{ order.date|date:"d/m/Y" }}</td>
+                                    <td class="py-2">
+                                        <ul class="list-unstyled mb-0">
+                                            {% for item in order.lineitems.all %}                                                
+                                                <li class="small">
+                                                    {% if item.size %}
+                                                        Size {{ item.size|upper }}
+                                                    {% endif %}{{ item.product.name }} x{{ item.quantity }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td class="py-2 text-end">£{{ order.grand_total }}</td>
+                                </tr>
+                            {% endfor %}
+
+                    {% else %}
+                        <!-- No Orders Text -->
+                        <tr class="col-12 text-center">
+                            <td colspan="5">
+                                <p class="font-body mt-3">You haven't placed any orders yet... <br> <a href="{% url 'products' %}" class="weight-semibold text-blue text-decoration-none text-link-blue">Go Shopping!</a></p>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
         </div>
+    </div>
     </div> 
 </div>
 {% endblock %}

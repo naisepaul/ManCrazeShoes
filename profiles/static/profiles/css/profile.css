@@ -26,3 +26,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+.order-history {
+    max-height: 416px; /* height of profile form + submit button */
+    overflow-y: auto;
+}
