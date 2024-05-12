@@ -11,12 +11,16 @@ class Category(models.Model):
         ('sandals', 'Sandals'),
     ]
     name = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
-
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    
     class Meta:
         verbose_name_plural = 'Categories'
 
     def __str__(self):
         return dict(self.CATEGORY_CHOICES)[self.name]
+    
+    def get_friendly_name(self):
+        return self.friendly_name
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
