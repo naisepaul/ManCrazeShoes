@@ -49,7 +49,7 @@
       {% for field in form.visible_fields %}
         <div class="form-group">
           <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          {{ field|add_class:"form-control" }} {# Add Bootstrap class for form control #}
+          {{ field|add_class:"form-control" }} 
           {% if field.help_text %}
             <small class="form-text text-muted">{{ field.help_text }}</small>
           {% endif %}
@@ -62,8 +62,7 @@
       <button type="submit" class="btn btn-primary btn-block">Sign In</button> 
     </form>
     <p class="login-links">
-      Don't have an account? <a href="{% url 'account_signup' %}" class="btn btn-secondary btn-sm">Sign up</a> <br>
-      
+      Don't have an account? <a href="{% url 'account_signup' %}" class="btn btn-secondary btn-sm">Sign up</a> <br>      
     </p>
   </div>
 </div>
