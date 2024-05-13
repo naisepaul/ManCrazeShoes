@@ -1,14 +1,10 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="new-arrivals-links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products<i class="fas fa-angle-down"></i>
             </a>
-            <!-- <div class="dropdown-menu border-0" aria-labelledby="new-arrivals-link">
-                <a href="{% url 'products' %}?category=formal,casual" class="dropdown-item">Shoes</a>               
-                <a href="{% url 'products' %}?category=sandals" class="dropdown-item ">Sandals</a>  
-                <a href="{% url 'products' %}?category=formal,casual,sandals" class="dropdown-item ">All Products</a>               
-            </div> -->
+            
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>                
                 <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
@@ -33,13 +29,9 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Special Offers<i class="fas fa-angle-down"></i>
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="specials-link">              
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Clearance</a>               
-            </div>
+            <a class="logo-font font-weight-bold nav-link text-black" href="{% url 'products' %}?new_arrivals"  id="new-arrivals-link" aria-haspopup="true" aria-expanded="false">
+                New Arrivals
+            </a>           
         </li>
     </ul>
 </div>
