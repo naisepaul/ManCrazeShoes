@@ -29,8 +29,8 @@
 
         <div class="col-12 col-lg-6 mt-2 mt-lg-0 mb-4 font-body">
             <!-- Section Title -->
-            <!-- <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DETAILS</p> -->
-
+            <!-- <p class="mt-0 mb-3 mt-sm-3 weight-semibold subtitle text-dark-grey">MY DETAILS</p> -->  
+          <div class="login-container">
             <div class="login-box1">
                 <!-- Form -->
                 <form action="{% url 'profile' %}" method="POST" id="profile-update-form" class="form-as-p">
@@ -82,7 +82,11 @@
                     </div>
         
                     <div class="form-group">
-                        {{ form.default_country|attr:"aria-label:Country" }}
+                        <!-- {{ form.default_country|attr:"aria-label:Country" }}
+                        {% for error in form.default_country.errors  %}
+                            <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
+                        {% endfor %} -->
+                        {{ form.default_country|add_class:"js-select2 form-control" }}
                         {% for error in form.default_country.errors  %}
                             <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                         {% endfor %}
@@ -106,7 +110,8 @@
                         UPDATE
                     </button>
                 </form>
-            </div>            
+            </div>   
+          </div>         
         </div>      
         
         <!-- Order History -->
@@ -172,3 +177,16 @@
     {{ block.super }}
     <script src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.js-select2').select2({
+            placeholder: 'Select a country',
+        });
+    });
+</script>
