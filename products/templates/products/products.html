@@ -55,7 +55,7 @@
                                 <div class="card h-100 border-0">
                                      <!-- Product Image -->                                    
                                     <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        <img class="card-img-top img-fluid" style="cursor: pointer;" src="{{ product.image.url }}" alt="{{ product.name }}">
                                     </a>                   
                                      <!-- Product name -->                 
                                     <div class="card-body pb-0">
