@@ -132,6 +132,7 @@
       </div>
        
     </header>
+    
 
     {% if messages %}
         <div class="message-container">
@@ -153,9 +154,43 @@
 
     {% block page_header %}
     {% endblock %}
+    <!-- Footer -->
+   
 
     {% block content %}
     {% endblock %}
+    <!-- <footer class="container-fluid mt-5"> -->
+    <footer class="text-center text-lg-start" id="footer">
+        <div class="row">
+            <div class="col-lg-4">
+                <h5>About Us</h5>
+                <p>Welcome to ManCrazeShoes, your go-to destination for high-quality men's footwear.
+                    Established in 2010, we pride ourselves on offering an extensive collection of 
+                    shoes that seamlessly blend style, comfort, and durability..</p>
+            </div>
+            <div class="col-lg-4">
+                <h5>Contact Us</h5>
+                <ul class="list-unstyled">
+                    <li>123 Main Street, City</li>
+                    <li>contact@example.com</li>
+                    <li>(123) 456-7890</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h5>Follow Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="https://www.facebook.com/naise.paul" target="_blank" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <p>&copy; 2024 ManCrazeShoes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     {% block postloadjs %}
     <script src="{% static 'js/toasts.js' %}"></script>
