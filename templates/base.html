@@ -129,10 +129,8 @@
             <div class="col bg-black text-blue">
                 <h4 class="logo-font my-1">Free delivery on orders over €{{ free_delivery_threshold }}!</h4>                
             </div>                
-      </div>
-       
-    </header>
-    
+      </div>       
+    </header>    
 
     {% if messages %}
         <div class="message-container">
@@ -154,12 +152,10 @@
 
     {% block page_header %}
     {% endblock %}
-    <!-- Footer -->
-   
-
+ 
     {% block content %}
     {% endblock %}
-    <!-- <footer class="container-fluid mt-5"> -->
+     <!-- footer -->
     <footer class="text-center text-lg-start" id="footer">
         <div class="row">
             <div class="col-lg-4">
@@ -172,7 +168,7 @@
                 <h5>Contact Us</h5>
                 <ul class="list-unstyled">
                     <li>123 Main Street, City</li>
-                    <li>contact@example.com</li>
+                    <li>mancrazeshare@example.com</li>
                     <li>(123) 456-7890</li>
                 </ul>
             </div>
@@ -187,7 +183,8 @@
         </div>
         <div class="row">
             <div class="col text-center">
-                <p>&copy; 2024 ManCrazeShoes. All rights reserved.</p>
+                <p>&copy; 2024 ManCrazeShoes. All rights reserved.<a href="https://github.com/naisepaul/ManCrazeShoes" target="_blank"
+                    class="me-4 text-reset" aria-label="Link to GitHub"</p><i class="fab fa-github"></i>
             </div>
         </div>
     </footer>
