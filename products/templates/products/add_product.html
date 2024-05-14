@@ -41,7 +41,7 @@
                 
                 <!-- Description -->
                 {{ form.description.label_tag }}
-                {{ form.description }}
+                {{ form.description }}                
                 {% for error in form.description.errors  %}
                     <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
                 {% endfor %}
@@ -100,4 +100,5 @@
             </form>
         </div>
     </div>
+
 {% endblock %}
