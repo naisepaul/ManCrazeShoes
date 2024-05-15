@@ -22,7 +22,7 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
   - [Wireframes](#wireframes)
   - [Agile Methodology](#agile-methodology)
   - [Overview](#overview)
-  - [EPICS(Milestones)](#epics)
+  - [EPICS(Milestones)](#epics(milestones))
   - [User Stories issues](#user-stories-issues)
   - [MoSCoW prioritization](#moscow-prioritization)
   - [GitHub Projects](#github-projects)
@@ -147,4 +147,51 @@ In addition to Bootstrap 4 built in font family the below two fonts were used th
 Poppins
 Indie Flower
 
+[Back to Table of contents](#table-of-contents)
+
 ### Wireframes
+
+- Home
+
+<details>
+  <summary>Home</summary> 
+    <img src="https://res.cloudinary.com/dmhdrvehj/image/upload/v1715766033/wireframe-home_jirs0t.png">   
+</details><br> 
+
+- Product
+<details>
+  <summary>Product</summary> 
+  <img src ="https://res.cloudinary.com/dmhdrvehj/image/upload/v1715766033/wireframe-product_po4b1y.png">
+</details>
+
+### Agile Methodology
+
+#### Overview
+
+This project was created using agile principles. As this is my second full-stack project, using agile, it was easier to identify the relevant milestones. Using the agile approach allowed me to plan all the features of the website through user stories. Each user story has acceptance criteria and tasks to clearly outline the requirements for each feature to be completed.
+
+#### Epics(Milestones)
+
+The user stories are grouped into eight EPICS or Milestones. An additional Milestone called Project Backlog was created to manage any additional features, bugs, or tasks that may arise during development.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715769834/epic-milestone_qjbw1o.png)
+
+#### User Stories Issues
+
+The structure of the user story issue consists of the user story, acceptance criteria, and tasks that outline the steps that are required for this issue to be completed. During development where possible, the commit messages are connected to their corresponding issues.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715770270/user-stories1_jfo3yf.png)
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715770270/user-stories2_vfusbh.png)
+
+#### MoSCoW prioritization
+
+This prioritization technique was used to effectively prioritize the features and requirements of the project based on their importance. The acronym "MoSCoW" stands for "Must have, Should have, Could have, and Won't have." Each category helps categorize and prioritize features to guide the development process and ensure that the most critical elements are addressed first.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715770543/mosco_itcuti.png)
+
+#### GitHub Projects
+
+The project was created using a basic Kanban Board structure, divided into columns such as Todo, In Progress, Done, and Backlog. This setup provides a clear and organized way to track the status of tasks and visualize and manage the workflow.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715770719/github-project_lrpvxe.png)
