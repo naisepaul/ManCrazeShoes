@@ -41,6 +41,12 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
     - [Checkout](#checkout)
         - [Order Confirmation Page](#order-confirmation-page)
     - [User Authentication](#user-authentication)
+- [Future Features](#future-features)
+- [Testing](#testing)
+- [Technologies And Languages](#technologies-and-languages)
+    - [Languages Used](#languages-used)
+    - [Python Modules](#python-modules)
+    - [Technologies and programs](#technologies-and-programs)
             
 
 ## User Experience
@@ -346,3 +352,53 @@ The website uses django allauth's built in functionality which allows the users 
 ![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715793054/signup_aai1gy.png)
 
 [Back to Table of contents](#table-of-contents)
+
+## Future Features
+
+- Add stock details which can be updated by the admin.
+- Add reviews, customer can add, edit and delete their reviews.
+- Add wishlist, so user can see their wishlist when they login next time.
+- Add send email to confirmation to customers when they order confirmed.
+
+## Technologies And Languages
+
+### Languages Used
+  - HTML
+  - CSS
+  - JavaScript
+  - jQuery
+  - Bootstrap
+  - Python
+  - Django
+### Python Modules
+  - dj-database-url - This library is used to parse the database URL specified in the DATABASE_URL environment variable, which is commonly used for configuring database connections in Django projects.
+
+  - django-storages - Django Storages is a collection of custom storage backends for Django, including support for storing files on remote services like Cloudinary.
+
+  - django-widget-tweaks - Django Widget Tweaks is a package that simplifies working with form widgets and templates in Django
+
+  - gunicorn - Gunicorn is a popular WSGI (Web Server Gateway Interface) HTTP server for running Python web applications, including Django applications, in a production environment.
+
+  - Pillow - Pillow is a Python Imaging Library (PIL) fork that provides tools for working with images in various formats.
+
+  - psycopg2 - Psycopg2 is a PostgreSQL adapter for Python. It allows Django to connect to PostgreSQL databases.
+
+### Technologies and programs
+
+  - Favicon Generator was used to generate Favicon
+  - GitHub is the hosting site used to store the code for the website.
+  - Git was used as a version control software to commit and push the code to the GitHub repository.
+  - Heroku - used for deploying the project
+  - Font Awesome - for creating atractive UX with icons
+  - Bootstrap4 - for adding predifined styled elements and creating responsiveness
+  - LightHouse - for testing performance
+  - Photoshop was used for creating the mockup images of the website during planning stage.
+  - Google Fonts was used to import fonts.
+  - Google Chrome Lighthouse was used during the testing of the website.
+  - Google Chrome Developer Tools was used during testing, debugging and making the website responsive.
+  - Cloudinary was used to store media files.
+  - Stripe was integrated to handle payment processing in a secure and convenient way.
+  - W3C HTML Validator was used to check for errors in the HTML code.
+  - W3C CSS Validator was used to check for errors in the CSS code
+  - Js Hint was used to validate the JavaScript code.
+  - CI Python Linter was used to validate the Python code.
