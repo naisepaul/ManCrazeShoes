@@ -36,6 +36,11 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
         - [Product Card](#product-card)
         - [Single Product Page](#single-product-page)
     - [My Profile Page](#my-profile-page)
+    - [Product Management](#product-management)
+    - [Shopping bag](#shopping-bag)
+    - [Checkout](#checkout)
+        - [Order Confirmation Page](#order-confirmation-page)
+    - [User Authentication](#user-authentication)
             
 
 ## User Experience
@@ -279,3 +284,65 @@ This page renders a form for the user's address and phone number. If the user ha
 This page displays the past orders of this user.
 
 ![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715778176/profile-order_pkxlme.png)
+
+### Product Management
+
+This section can be accessed only by admin or superuser. This section allows admins to add, edit and delete shoes without the need of the built in Django admin.
+
+- Products view for super user
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715787400/admin-product-view_lwaxit.png)
+
+- single product view for super user
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715787400/admin-product-view1_ffihpz.png)
+
+#### Add Products
+
+This page renders the product creation form and all required fields to add an item to the database. 
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715787400/add-product_emn0en.png)
+
+#### Edit Product
+
+This page renders the product form prefilled with the existing data in the database. It allows the admin to modify the details of the products.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715787400/edit-product_myityq.png)
+
+[Back to Table of contents](#table-of-contents)
+
+#### Shopping bag
+
+The shopping bag can be accessed from the main nav menu. The shopping bag table section provides a clear and organized representation of the items added to the shopping bag. Each item has a small image, name, size, price, quantity, and subtotal. The users can upgrade the quantity or delete items from the cart with the help of the buttons provided. On the bottom right side displays the bag total, delivery charges, and grand total.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715791580/shopping-bag_ucginn.png)
+
+#### Checkout
+
+This page contains a form for the user's delivery and payment information and a summary of the user's order. If the user has an account, they can save their delivery information on their profile to automatically be filled in the checkout.
+
+The checkout Form In the checkout the user can add their details and if they're logged in, can check the box to save their details for future transactions. Users must enter their payment information before completing the checkout and all payments are handled via Stripe.
+
+Order summary A final summary of the user's order is shown containing all the user's basket items, quantity and subtotal for each item. The user can also see their bag total, delivery costs and the grand total in the summary.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715792268/checkout_hvysl3.png)
+
+#### Order confirmation page
+
+After the order has been completed, the user is redirected to a confirmation page containing a final rundown of the order and what the user purchased. This page can be accessed again from the user's profile if they have an account on the site by clicking the order number from the list of past orders.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715792504/checkout-confirmation_tljixh.png)
+
+### User Authentication
+
+The website uses django allauth's built in functionality which allows the users to register and log in securely. There is also a reset password functionality which allows the user to input their email address and recieve a link where they can securely reset their password.
+
+- login form
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715793054/login_k0g7oi.png)
+
+- Sign up form
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715793054/signup_aai1gy.png)
+
+[Back to Table of contents](#table-of-contents)
