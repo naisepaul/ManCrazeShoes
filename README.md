@@ -32,7 +32,11 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
     - [Home](#home)
         - [Hero Section](#hero-section)
         - [Recent Items](#recent-items)
-        
+    - [Product Page](#product-page)
+        - [Product Card](#product-card)
+        - [Single Product Page](#single-product-page)
+    - [My Profile Page](#my-profile-page)
+            
 
 ## User Experience
 
@@ -242,3 +246,36 @@ The products displayed on the home page are the most recently added 6 products.
 ![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715774753/recent-items_hr5m56.png)
 
 [Back to Table of contents](#table-of-contents)
+
+### Product Page
+
+The all product page renders all products to the user. They have the option to sort the products by category and price. If we want we can select by category like formal, casual and sandals. And there is small button on the right bottom to go to the top.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715775695/product-page_autnwo.png)
+
+#### Product Card
+
+The product card consist of an image of the shoe, price and name. When we click on the image it goes to the product details page.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715776299/product-card_ceanhx.png)
+
+#### Single Products Page
+
+On the page's left side, a product image is displayed. On the right side, the most important information about the product is displayed. This includes the name, price, description, shoe size  and add to cart button with quantity dropdown. 
+Implementing stock levels in the product model, allowed for adding custom logic when it comes to adding items to the shopping bag. The user should not be able to add to their cart a higher quantity(5 maximum).
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715777126/single-product-page_zv5ifj.png)
+
+### My Profile Page
+
+This section is accessible only to registered users. This section contains two sections. left side- my profile and right side - my orders
+
+- Profile
+
+This page renders a form for the user's address and phone number. If the user has any details saved, it renders prefilled.
+
+- Order History
+
+This page displays the past orders of this user.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715778176/profile-order_pkxlme.png)
