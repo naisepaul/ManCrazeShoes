@@ -21,11 +21,18 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
   - [Fonts](#fonts)
   - [Wireframes](#wireframes)
   - [Agile Methodology](#agile-methodology)
-  - [Overview](#overview)
-  - [EPICS(Milestones)](#epics(milestones))
-  - [User Stories issues](#user-stories-issues)
-  - [MoSCoW prioritization](#moscow-prioritization)
-  - [GitHub Projects](#github-projects)
+    - [Overview](#overview)
+    - [EPICS(Milestones)](#epics(milestones))
+    - [User Stories issues](#user-stories-issues)
+    - [MoSCoW prioritization](#moscow-prioritization)
+    - [GitHub Projects](#github-projects)
+- [Features](#features)
+    - [Navbar](#navbar)
+    - [Footer](#footer)
+    - [Home](#home)
+        - [Hero Section](#hero-section)
+        - [Recent Items](#recent-items)
+        
 
 ## User Experience
 
@@ -195,3 +202,43 @@ This prioritization technique was used to effectively prioritize the features an
 The project was created using a basic Kanban Board structure, divided into columns such as Todo, In Progress, Done, and Backlog. This setup provides a clear and organized way to track the status of tasks and visualize and manage the workflow.
 
 ![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715770719/github-project_lrpvxe.png)
+
+## Features
+
+### Navbar
+
+The navbar was built using bootstrap 4 and it is fully responsive. The search bar allows the users to search for products by keywords from any page of the website. The My Account drop down gives the user the option to log in or sign up. If the user is authenticated additional menu options are displayed like my profile and Product Management (if the user is a superuser). The shopping bag icon is a link to the shopping bag and it also displays the total of the items in the bag. The nav links allow the user to refine the products by category, price and new arrivals. There is a dropdown for shoes which allows the user to see the formal and casual shoes.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715772856/navbar-desktop_wvjktt.png)
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715772856/navbar-mobile_geq4zw.png)
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715772857/navbar-mobile1_jt1b2d.png)
+
+### Toasts
+
+Toasts from Bootstrap were implemented to provide customers with feedback regarding their actions on the website.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715773676/toast_spon3d.png)
+
+### Footer
+
+The footer consist of links to social media links, business address and about us.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715773971/footer_vktuxo.png)
+
+### Home
+
+#### Hero Section
+
+The hero section is the beginning of the whole customer's journey. That is why I made it a priority to create appealing hero section. The text on the left side communicates about the new collections and right side I used carousel with 3 shoe photos.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715774752/hero-section_pyv6ca.png)
+
+#### Recent Items
+
+The products displayed on the home page are the most recently added 6 products.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715774753/recent-items_hr5m56.png)
+
+[Back to Table of contents](#table-of-contents)
