@@ -14,6 +14,18 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
   - [Website goal](#website-goal)
   - [Scope](#scope)
   - [User Stories](#user-stories)
+   
+- [Design](#design)
+  - [Color Scheme](#color-scheme)
+  - [Database Schema](#database-schema)
+  - [Fonts](#fonts)
+  - [Wireframes](#wireframes)
+  - [Agile Methodology](#agile-methodology)
+  - [Overview](#overview)
+  - [EPICS(Milestones)](#epics)
+  - [User Stories issues](#user-stories-issues)
+  - [MoSCoW prioritization](#moscow-prioritization)
+  - [GitHub Projects](#github-projects)
 
 ## User Experience
 
@@ -97,3 +109,42 @@ Key Features:
 19. As an administrator, I want to be able to remove products from the website so that I can manage the product catalog.
 20. As a User I want to be able to complete the checkout process for my shopping cart so that I can purchase the items I've added to my cart.
 
+[Back to Table of contents](#table-of-contents)
+
+## Design
+
+### Colour Scheme
+In this website mainly used black and white combinations. For login,sign up forms and buttons used light blue colors. For product container used grey color and yellow color for selected shoe size.
+
+The below colours are the main colours.
+-  #fff
+-  #333
+-  #f2f2f2
+-  #ffd700;
+- aquamarine
+
+### Database Schema
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715736668/database-schema_svcmsn.png)
+
+1. User: The User model is part of Django Allauth. The model comes with predefined fields as standard. Some of them are username, email, password, and more. This model is used for user authentication, hence why changes directly to this model are not advisory. The User model is connected to the UserProfile model with one to one relationship.
+
+2. UserProfile: The UserProfile model is a custom custom-created model to handle the user profile details. Signals are used to reflect the changes between the User and UserProfile models.
+
+3. Category: This model was created for the purpose of defining categories for the products
+
+4. Product: This is a custom product model. It is connected to Genre.
+
+5. Order: This model holds all the information of the user's order. It is connected to the UserProfile as a ForeignKey.
+
+6. OrderLineItem This model is connected to the Order and Product as a ForeignKey. It is created for each item in the order
+7. ProductVariant: This model is connected with shoe size and stock for each size.
+
+### Fonts
+
+In addition to Bootstrap 4 built in font family the below two fonts were used throughout the application
+
+Poppins
+Indie Flower
+
+### Wireframes
