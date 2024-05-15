@@ -47,6 +47,15 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
     - [Languages Used](#languages-used)
     - [Python Modules](#python-modules)
     - [Technologies and programs](#technologies-and-programs)
+- [Deployment](#deployment)
+    - [Deploy on Heroku](#deploy-on-heroku)
+    - [Fork the repository](#fork-the-repository)
+    - [Clone the repository](#clone-the-repository)
+- [Credits](#credits)
+    - [Media](#media)
+    - [Code](#code)
+    - [Acknowledgements](#acknowledgements)
+    - [Comments](#comments)
             
 
 ## User Experience
@@ -174,11 +183,10 @@ Indie Flower
 ### Wireframes
 
 - Home
-
 <details>
   <summary>Home</summary> 
     <img src="https://res.cloudinary.com/dmhdrvehj/image/upload/v1715766033/wireframe-home_jirs0t.png">   
-</details><br> 
+</details>
 
 - Product
 <details>
@@ -402,3 +410,71 @@ The website uses django allauth's built in functionality which allows the users 
   - W3C CSS Validator was used to check for errors in the CSS code
   - Js Hint was used to validate the JavaScript code.
   - CI Python Linter was used to validate the Python code.
+
+### python Packages
+
+<details>
+  <summary>Python Packages</summary> 
+    <img src="https://res.cloudinary.com/dmhdrvehj/image/upload/v1715794819/python-packages_cjvwpl.png">   
+</details>
+
+## Deployment
+
+  ### Deploy on Heroku
+
+1. Create Pipfile
+
+  - In the terminal enter the command  pip3 freeze > requirements.txt, and a file with all requirements will be created.
+
+2. Setting up Heroku
+
+  - Go to the Heroku website (https://www.heroku.com/)
+  - Login to Heroku and choose Create App
+  - Click New and Create a new app
+  - Choose a name and select your location
+  - Go to the Resources tab
+  - From the Resources list select Heroku Postgres
+  - Navigate to the Deploy tab
+  - Click on Connect to Github and search for your repository
+  - Navigate to the Settings tab
+  - Reveal Config Vars and add your aws, Database URL and Secret key.
+
+3. Deployment on Heroku
+
+  - Go to the Deploy tab.
+  - Choose the main branch for deploying and enable automatic deployment
+  - Select manual deploy for building the App
+
+### Fork the repository
+
+For creating a copy of the repository on your account and change it without affecting the original project, useFork directly from GitHub:
+
+  - On My Repository Page, press Fork in the top right of the page.
+  - A forked version of my project will appear in your repository.
+
+### Clone the repository
+
+For creating a clone of the repository on your local machine, useClone:
+
+  - On My Repository Page, click the Code green button, right above the code window
+  - Chose from HTTPS, SSH and GitClub CLI format and copy (preferably HTTPS)
+  - In your IDE open Git Bash
+  - Enter the command git clone followed by the copied URL
+  - Your clone was created
+
+## Credits
+
+### Media
+  - Downloaded the shoe pictures from [Doc & Mark](https://docandmark.com/) and [freepik](https://www.freepik.com/)
+
+### Code
+  - Boutique Ado Walkthrough was used for the base of this project
+  - [island-bees](https://github.com/emmahewson/island-bees)
+  - [bookheaven](https://github.com/Dayana-N/Book-Heaven-PP5/)
+### Acknowledgements
+  - To complete this project I used Code institue student template: Gitpod full template
+  - [Stackoverflow](https://stackoverflow.com/)
+### Mockup
+  - [Mockup screenshot generator](https://ui.dev/amiresponsive)
+### Comments
+   I really enjoyed working on this project. My idea was to develop a real world application with user friendly design. I wish I had more time to add automated testing and to describe in detail the manual testing performed as I usually do. That will be added on a later stage.
