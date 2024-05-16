@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /accounts/
+Sitemap: https://mancrazeshoes-4c1185db9ef9.herokuapp.com/sitemap.xml
