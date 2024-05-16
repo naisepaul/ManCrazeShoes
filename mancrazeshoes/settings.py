@@ -21,7 +21,6 @@ if os.path.isfile('env.py'):
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR =  os.path.join(BASE_DIR, 'templates')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -31,11 +30,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu111.gitpod.io','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu111.gitpod.io', '.herokuapp.com']
 # ALLOWED_HOSTS = ['8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu110.gitpod.io']
 
 CSRF_TRUSTED_ORIGINS =['https://8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu111.gitpod.io']
-                        
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,12 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 
+    'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'cloudinary_storage',       
+    'cloudinary_storage',
     'cloudinary',
     'django_summernote',
     # Apps
@@ -58,7 +57,7 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'profiles',
-    #other
+    # other
     'widget_tweaks',
 ]
 
@@ -70,8 +69,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',  
-    
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mancrazeshoes.urls'
@@ -80,9 +79,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [TEMPLATES_DIR,
-                os.path.join(BASE_DIR, 'templates'),
-                os.path.join(BASE_DIR, 'templates', 'allauth'),              
-        ],
+                 os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'templates', 'allauth'),
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,12 +97,12 @@ TEMPLATES = [
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
-AUTHENTICATION_BACKENDS = [    
+AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by email
-    'allauth.account.auth_backends.AuthenticationBackend',    
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 SITE_ID = 1

@@ -368,6 +368,9 @@ The website uses django allauth's built in functionality which allows the users 
 - Add wishlist, so user can see their wishlist when they login next time.
 - Add send email to confirmation to customers when they order confirmed.
 
+## Testing
+Testing documentation can be found [here](TESTING.md).
+
 ## Technologies And Languages
 
 ### Languages Used
