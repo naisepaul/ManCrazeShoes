@@ -74,7 +74,7 @@ I ran the CSS code through the [W3C CSS Validator](https://jigsaw.w3.org/css-val
 
 ---
 
-### JavaScript Linting
+### JavaScript
 
 I ran the JavaScript code through [JSHint](https://jshint.com/). For full results see the dropdowns below.
 
@@ -111,8 +111,9 @@ I ran the JavaScript code through [JSHint](https://jshint.com/). For full result
 <details><summary>update-remove</summary>
 <img src="https://res.cloudinary.com/dmhdrvehj/image/upload/v1715840621/update-remove-script_msruwh.png">
 </details>
+</details>
 
-### Python Linting
+### Python
 
 I ran the app.py code through [https://pep8ci.herokuapp.com/](https://pep8ci.herokuapp.com/) to check the Syntax. GitPod also has a built in Python Linter which was used throughout the development process (see below). All code passed the validation tests. For full results see the dropdowns below.
 
