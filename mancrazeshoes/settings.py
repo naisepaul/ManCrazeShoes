@@ -28,11 +28,11 @@ TEMPLATES_DIR =  os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu111.gitpod.io','mancrazeshoes-4c1185db9ef9.herokuapp.com' ]
+ALLOWED_HOSTS = ['8000-naisepaul-mancrazeshoes-zv7u9po4df9.ws-eu114.gitpod.io','mancrazeshoes-4c1185db9ef9.herokuapp.com' ]
 
-CSRF_TRUSTED_ORIGINS =['https://8000-naisepaul-mancrazeshoes-tgqsmquw52o.ws-eu111.gitpod.io', 'https://mancrazeshoes-4c1185db9ef9.herokuapp.com']
+CSRF_TRUSTED_ORIGINS =['https://8000-naisepaul-mancrazeshoes-zv7u9po4df9.ws-eu114.gitpod.io', 'https://mancrazeshoes-4c1185db9ef9.herokuapp.com']
 
 
 # Application definition
