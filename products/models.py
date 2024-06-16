@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
+
 class Category(models.Model):
     CATEGORY_CHOICES = [
         ('formal', 'Formal Shoes'),
@@ -12,15 +13,16 @@ class Category(models.Model):
     ]
     name = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    
+
     class Meta:
         verbose_name_plural = 'Categories'
 
     def __str__(self):
         return dict(self.CATEGORY_CHOICES)[self.name]
-    
+
     def get_friendly_name(self):
         return self.friendly_name
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -28,10 +30,11 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=4, decimal_places=2)
     image = CloudinaryField('image')
-    created_at = models.DateTimeField(auto_now_add=True) 
-    
+    created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return self.name
+
 
 class ProductVariant(models.Model):
     SIZE_CHOICES = [
@@ -44,7 +47,9 @@ class ProductVariant(models.Model):
     ]
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     size = models.CharField(max_length=10, choices=SIZE_CHOICES)
-    stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(20)])  # Example range of 0 to 20
+    # Example range of 0 to 20
+    stock = models.IntegerField(validators=[MinValueValidator(0),
+                                MaxValueValidator(20)])
 
     def __str__(self):
         return f"{self.product.name} - {self.size}"
