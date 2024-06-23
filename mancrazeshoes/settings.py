@@ -31,12 +31,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-naisepaul-mancrazeshoes-zv7u9po4df9.ws-eu114.gitpod.io',
+    '8000-naisepaul-mancrazeshoes-5rgrp5zdqrx.ws.codeinstitute-ide.net',
     'mancrazeshoes-4c1185db9ef9.herokuapp.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-naisepaul-mancrazeshoes-zv7u9po4df9.ws-eu114.gitpod.io',
+    'https://8000-naisepaul-mancrazeshoes-5rgrp5zdqrx.ws.codeinstitute-ide.net',
     'https://mancrazeshoes-4c1185db9ef9.herokuapp.com']
 
 

@@ -278,6 +278,11 @@ a.category-badge > span.badge:hover {
     border: 1px solid red;
 }
 
+#map-style {
+    width: 100%;
+    height: 500px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
