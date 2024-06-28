@@ -15,3 +15,9 @@ def about_us(request):
     """ A view to return the about us page """
 
     return render(request, 'home/aboutus.html')
+
+
+def faq(request):
+    """ A view to return the about us page """
+
+    return render(request, 'home/faq.html')
