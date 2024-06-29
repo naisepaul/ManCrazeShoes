@@ -8,6 +8,12 @@ from django_countries.fields import CountryField
 from products.models import Product, ProductVariant
 from profiles.models import UserProfile
 
+# Create your models here.
+STATUS = (
+    ('in_progress', 'In Progress'),
+    ('completed', 'Completed'),
+    ('cancelled', 'Cancelled'),
+)
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -67,6 +73,16 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_number
+
+
+class OrderStatus(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    status = models.CharField(
+        max_length=200, null=True, blank=True, choices=STATUS,
+        default=STATUS[0][0])
+
+    def __str__(self):
+        return f'{self.order.order_number} - {self.status}'
 
 
 class OrderLineItem(models.Model):
