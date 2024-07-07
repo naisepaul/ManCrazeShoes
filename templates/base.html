@@ -158,41 +158,107 @@
  
     {% block content %}
     {% endblock %}
-    <!-- footer -->
-        <footer class="text-center text-lg-start" id="footer">
-            <div class="row">
-                <div class="col-lg-4">
-                    <ul class="list-unstyled">
-                        <li><a href="{% url 'about_us' %}"> <strong>About Us</strong></a></li>
-                        <li><a href="{% url 'faq' %}"> <strong>FAQ</strong></a></li>
-                    </ul>
+        <!-- footer -->    
+        <footer class="footer bg-dark text-white mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mt-4">
+                        <h5 class="footer-heading d-block d-md-none help-header" data-toggle="collapse" data-target="#help-content" aria-expanded="false" aria-controls="help-content">Help
+                            <button class="toggle-button" type="button" aria-expanded="false">+</button>
+                        </h5>                        
+                        <h5 class="footer-heading d-none d-md-block">Help</h5>
+                        <div class="collapse d-md-block" id="help-content">
+                            <ul class="list-unstyled">
+                                <li><a href="{% url 'account_signup' %}" class="text-white">Sign Up</a></li>
+                                <li><a href="{% url 'account_login' %}" class="text-white">Sign In</a></li>
+                                <li><a href="{% url 'about_us' %}" class="text-white">About Us</a></li>
+                                <li><a href="{% url 'faq' %}" class="text-white">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>                    
+                    <div class="col-md-4 mt-4">
+                        <h5 class="footer-heading d-block d-md-none shopby-header" data-toggle="collapse" data-target="#shopby-content" aria-expanded="false" aria-controls="shopby-content">
+                            Shop By
+                            <button class="toggle-button" type="button" aria-expanded="false">+</button>
+                        </h5>
+                        <h5 class="footer-heading d-none d-md-block">SHOP BY</h5>
+                        <div class="collapse d-md-block" id="shopby-content">
+                            <ul class="list-unstyled">
+                                <li><a href="{% url 'products' %}?category=formal" class="text-white">Formals</a></li>
+                                <li><a href="{% url 'products' %}?category=casual" class="text-white">Casuals</a></li>
+                                <li><a href="{% url 'products' %}?category=sandals" class="text-white">Sandals</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h5 class="footer-heading">
+                            <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                                <img class="mcs_logo"
+                                src="https://res.cloudinary.com/dmhdrvehj/image/upload/v1714570470/favicon-32x32_fdusqz.png" alt="Shoe logo">
+                                <h2 class="logo-font text-black my-0" style="display: inline-block;">
+                                    <strong>ManCrazeShoes</strong>
+                                </h2>
+                            </a>
+                        </h5>
+                        <div class="container d-flex justify-content-center justify-content-lg-between">
+                            <div class="me-5 d-none d-lg-block">
+                              <span>FOLLOW US</span>
+                            </div>
+                            <div id="social-links">
+                              <ul class="list-inline social-links">                                
+                                <li class="list-inline-item">
+                                    <a href="https://www.facebook.com/naise.paul" target="_blank" rel="noopener" aria-label="Link to Facebook"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://www.twitter.com" target="_blank" rel="noopener" aria-label="Link to Twitter"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Link to Instagram"><i class="fab fa-instagram"></i></a>
+                                </li>                                
+                                <li class="list-inline-item">
+                                  <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="Link to Youtube"><i class="fab fa-youtube"></i></a>                                                                     
+                                </li>                                               
+                              </ul>  
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="col text-center">
+                                <p>&copy; 2024 ManCrazeShoes. All rights reserved.<a href="https://github.com/naisepaul/ManCrazeShoes" target="_blank" rel="noopener" 
+                                    class="me-4 text-reset" aria-label="Link to GitHub"><i class="fab fa-github"></i></a></p>
+                            </div>
+                        </div>                      
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <h5>Contact Us</h5>
-                    <ul class="list-unstyled">
-                        <li>123 Main Street, City</li>
-                        <li>mancrazeshare@example.com</li>
-                        <li>(123) 456-7890</li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h5>Follow Us</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="https://www.facebook.com/naise.paul" target="_blank" rel="noopener" aria-label="Link to Facebook"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li><a href="https://www.twitter.com" target="_blank" rel="noopener" aria-label="Link to Twitter"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Link to LinkedIn"><i class="fab fa-instagram"></i> LinkedIn </a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <p>&copy; 2024 ManCrazeShoes. All rights reserved.<a href="https://github.com/naisepaul/ManCrazeShoes" target="_blank" rel="noopener" 
-                        class="me-4 text-reset" aria-label="Link to GitHub"><i class="fab fa-github"></i></a></p>
-                </div>
-            </div>
+            </div>            
         </footer>
     </div>
     {% block postloadjs %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function setupToggleButton(headerSelector, contentSelector) {
+                const toggleButton = document.querySelector(headerSelector + ' .toggle-button');
+                const content = document.querySelector(contentSelector);
+
+                toggleButton.addEventListener('click', function() {
+                    const isExpanded = content.classList.contains('show');
+                    toggleButton.textContent = isExpanded ? '+' : '-';
+                });
+
+                $(contentSelector).on('show.bs.collapse', function () {
+                    toggleButton.textContent = '-';
+                });
+
+                $(contentSelector).on('hide.bs.collapse', function () {
+                    toggleButton.textContent = '+';
+                });
+            }
+
+            setupToggleButton('.shopby-header', '#shopby-content');
+            setupToggleButton('.help-header', '#help-content');
+        });
+       
+    </script>
     <script src="{% static 'js/toasts.js' %}"></script>
     {% endblock %}
 </body>
