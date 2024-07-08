@@ -285,6 +285,7 @@ a.category-badge > span.badge:hover {
 
 .shopby-header,
 .help-header {
+    color: lightseagreen;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
