@@ -274,7 +274,7 @@ Due to time limits there was no scope to expand.
 
 - Stripe webhooks
 
-![order](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715850941/stripe-payment_lobssg.png)
+![order](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720393587/Stripe-webhook_fo4vox.png)
 
 - Stripe Events
 ![order](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715851906/stipe_hrlszq.png)
