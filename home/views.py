@@ -21,3 +21,9 @@ def faq(request):
     """ A view to return the about us page """
 
     return render(request, 'home/faq.html')
+
+
+def privacy_policy(request):
+    """ A view to return the privacy policy page """
+
+    return render(request, 'home/privacy_policy.html')
