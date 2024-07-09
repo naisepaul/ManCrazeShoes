@@ -6,7 +6,7 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
 
 [You can see the live project here](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/)
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715724756/mock-up_of7llk.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720508580/mock-up_aav1d8.png)
 
 ## [Table of Contents](#table-of-contents)
 
@@ -234,9 +234,9 @@ The navbar was built using bootstrap 4 and it is fully responsive. The search ba
 
 ![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715772856/navbar-desktop_wvjktt.png)
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715772856/navbar-mobile_geq4zw.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720509064/navbar-mobile_obwnl9.png)
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715772857/navbar-mobile1_jt1b2d.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720509064/navbar-mobile1_hsmu4f.png)
 
 ### Toasts
 
@@ -246,9 +246,13 @@ Toasts from Bootstrap were implemented to provide customers with feedback regard
 
 ### Footer
 
-The footer consist of links to social media links, business address and about us.
+The footer consist of links to social media links, help and shop by.
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715773971/footer_vktuxo.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720509349/footer-desktop_oozwa4.png)
+
+- mobile view
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720509349/footer-mobile_p1ntxx.png)
 
 ### Home
 
@@ -256,7 +260,7 @@ The footer consist of links to social media links, business address and about us
 
 The hero section is the beginning of the whole customer's journey. That is why I made it a priority to create appealing hero section. The text on the left side communicates about the new collections and right side I used carousel with 3 shoe photos.
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715774752/hero-section_pyv6ca.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720509503/hero-section_kfpkzp.png)
 
 #### Recent Items
 
