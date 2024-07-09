@@ -1,6 +1,6 @@
 # ManCrazeShoes - E-Commerce Site - Testing
 
-![Mock-up](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715724756/mock-up_of7llk.png)
+![Mock-up](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720508580/mock-up_aav1d8.png)
 
 [Click here to view the live web application](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/)
 
