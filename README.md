@@ -42,6 +42,7 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
         - [Order Confirmation Page](#order-confirmation-page)
     - [User Authentication](#user-authentication)
 - [Future Features](#future-features)
+- [Marketing](#marketing)
 - [Testing](#testing)
 - [Technologies And Languages](#technologies-and-languages)
     - [Languages Used](#languages-used)
@@ -371,6 +372,34 @@ The website uses django allauth's built in functionality which allows the users 
 - Add reviews, customer can add, edit and delete their reviews.
 - Add wishlist, so user can see their wishlist when they login next time.
 - Add send email to confirmation to customers when they order confirmed.
+
+## Marketing
+
+### Search Engine Optimization SEO and Marketing
+
+#### Business Model
+
+The B2C (Business-to-Consumer) ecommerce model for this online shoeshop operates as a platform catering to individual consumers looking to purchase a wide variety of shoes conveniently from their place. This model revolves around offering a selection of styles, ranging from casual, formal and sandals providing an accessible and user-friendly interface for browsing, selecting, purchasing, and receiving shoes.
+
+The target customers for this online shoeshop encompass diverse demographics, including fashion-conscious individuals, athletes, professionals, and anyone in need of quality footwear for various occasions. The business aims to attract shoe enthusiasts seeking convenience, variety, competitive pricing, and an engaging shopping experience.
+
+### SEO
+
+- Enhancements have been implemented for the main template, including the addition of descriptive meta tags such as title, description, and keywords. 
+- An XML sitemap was generated using a sitemap generator based on the deployed website, and this file is included at the root level of the project. 
+- Additionally, a robots.txt file was created at the root level of the project to guide search engine crawlers on which URLs they can access on the website.
+
+### Marketing
+- Newsletter is included in the home page. This section facilitates user engagement and promotes the e-commerce store through effective email marketing and social media presence.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720510743/newsletter_dewcjn.png)
+
+- Facebook Page
+
+[ManCrazeshoes](https://www.facebook.com/profile.php?id=61562444031840)
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720510790/facebook-page_m6mtt3.png)
+
 
 ## Testing
 Testing documentation can be found [here](TESTING.md).
