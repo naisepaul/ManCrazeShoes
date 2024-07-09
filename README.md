@@ -43,6 +43,7 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
     - [User Authentication](#user-authentication)
 - [Future Features](#future-features)
 - [Marketing](#marketing)
+- [Search Engine Optimization SEO](#search-engine-optimization-seo-and-marketing)
 - [Testing](#testing)
 - [Technologies And Languages](#technologies-and-languages)
     - [Languages Used](#languages-used)
@@ -390,6 +391,7 @@ The target customers for this online shoeshop encompass diverse demographics, in
 - Additionally, a robots.txt file was created at the root level of the project to guide search engine crawlers on which URLs they can access on the website.
 
 ### Marketing
+
 - Newsletter is included in the home page. This section facilitates user engagement and promotes the e-commerce store through effective email marketing and social media presence.
 
 ![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1720510743/newsletter_dewcjn.png)

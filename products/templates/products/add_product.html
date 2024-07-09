@@ -18,8 +18,7 @@
                 <h5 class="text-muted">Add a Product</h5>
                 <hr>
             </div>
-        </div>
-        
+        </div>        
         <div class="login-box">
             <!-- Product Form -->
             <form method="POST" action="{% url 'add_product' %}" class="form mt-3" id="product-form" enctype="multipart/form-data">
@@ -76,7 +75,7 @@
                     <p class="p-label-replace d-inline">Product Image:</p>                    
                     {{ form.image }}
                 </div>
-                                
+                                                                
                 <!-- General Form Errors -->
                 {% if form.errors %}
                     {% for error in form.non_field_errors %}
@@ -86,12 +85,10 @@
 
                 <!-- Buttons -->
                 <div class="mt-5 d-flex justify-content-end">
-
                     <!-- Cancel Button -->
                     <a href="{% url 'products' %}" class="btn btn-danger">
                         <p class="d-inline">CANCEL</p>
-                    </a>
-                
+                    </a>                
                     <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary">
                         ADD PRODUCT

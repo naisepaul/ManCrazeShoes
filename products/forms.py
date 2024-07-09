@@ -11,3 +11,4 @@ class ProductForm(forms.ModelForm):
         # exclude = ['image']
     image = forms.ImageField(label='Image', required=False,
                              widget=CustomClearableFileInput)
+            
