@@ -2,9 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .models import Product, Category, ProductVariant
+from .models import Product, Category, ProductVariant, Wishlist
 from .forms import ProductForm
-
 # Create your views here.
 
 
@@ -16,8 +15,17 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
-    new_arrivals = None
+    new_arrivals = None    
 
+    wishlist_products = []  # List of products in the user's wishlist
+    
+    # If the user is authenticated, get their wishlist products
+    if request.user.is_authenticated:
+        profile = request.user.userprofile
+        wishlist = Wishlist.objects.filter(user=profile).prefetch_related('products').first()
+        if wishlist:
+            wishlist_products = wishlist.products.all()  # Get the products in the user's wishlist
+       
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -54,13 +62,23 @@ def all_products(request):
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
-
+    
+    # Check if each product is in the user's wishlist
+    products_with_wishlist_status = []
+    for product in products:
+        is_in_wishlist = product in wishlist_products if request.user.is_authenticated else False
+        products_with_wishlist_status.append({
+            'product': product,
+            'is_in_wishlist': is_in_wishlist,
+        })
+        
     context = {
         'products': products,
+        'products_with_wishlist_status': products_with_wishlist_status,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
-        'new_arrivals': new_arrivals,
+        'new_arrivals': new_arrivals,                
     }
 
     return render(request, 'products/products.html', context)
@@ -68,12 +86,19 @@ def all_products(request):
 
 def product_detail(request, product_id):
     """ A view to show individual product details """
-
+    
     product = get_object_or_404(Product, pk=product_id)
     productvariant = ProductVariant.objects.filter(product=product)
+    wishlist = False
+    if request.user.is_authenticated:
+        profile = request.user.userprofile    
+        if Wishlist.objects.filter(user=profile, products=product).exists():
+            wishlist = True   
+                   
     context = {
         'product': product,
-        'productvariant': productvariant,
+        'productvariant': productvariant,   
+        'wishlist': wishlist,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -147,3 +172,34 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def my_wishlist(request, pk):
+    ''' Renders wishlist page '''
+    profile = get_object_or_404(UserProfile, id=pk)
+    wishlist = Wishlist.objects.filter(user=profile).order_by('-created')
+    
+    context = {
+        'wishlist': wishlist,
+    }
+    return render(request, 'product/wishlist.html', context)
+
+
+@login_required
+def wishlist_add(request, pk):
+    ''' Adds products to favourites '''
+    profile = request.user.userprofile
+    product = get_object_or_404(Product, id=pk)
+    redirect_url = request.POST.get('redirect_url','products')
+
+    wishlist, created = Wishlist.objects.get_or_create(
+        user=profile)    
+    if product in wishlist.products.all():
+        wishlist.products.remove(product)  # Remove the product if already in the wishlist
+        messages.success(request, f'{product.name} removed from your wishlist')
+    else:
+        wishlist.products.add(product)  # Add the product to the wishlist
+        messages.success(request, f'{product.name} added to your wishlist')  
+    return redirect(redirect_url)
+
