@@ -179,12 +179,12 @@ def delete_product(request, product_id):
 def my_wishlist(request, pk):
     ''' Renders wishlist page '''
     profile = request.user.userprofile
-    wishlist = Wishlist.objects.filter(user=profile).order_by('-created')
-    
+    # wishlist = Wishlist.objects.filter(user=profile).order_by('-created')
+    wishlist = Wishlist.objects.filter(user=profile).first()
     context = {
         'wishlist': wishlist,
     }
-    return render(request, 'product/wishlist.html', context)
+    return render(request, 'products/wishlist.html', context)
 
 
 @login_required

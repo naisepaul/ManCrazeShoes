@@ -105,7 +105,7 @@
                         {% if request.user.is_authenticated %}                                
                             <a href="{% url 'my_wishlist' request.user.id %}" class="dropdown-item">                               
                                 <div class="text-center">
-                                    <div><i class="fas fa-heart"></i></div>
+                                    <div><i class="fas fa-heart text-danger fa-lg"></i></div>
                                     {% if wishlist_count %}
                                         <span class="wishlist-count">{{ wishlist_count }}</span>
                                     {% else %}

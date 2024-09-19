@@ -8,3 +8,5 @@ def wishlist_count(request):
         if wishlist:
             return {'wishlist_count': wishlist.products.count()}
     return {'wishlist_count': 0}
+
+    
