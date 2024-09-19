@@ -23,9 +23,10 @@
                             {% if wishlist %} 
                                 <i class="fa fa-heart text-danger"></i> 
                             {% else %}
-                                <i class="fa fa-heart-o"></i> 
+                                <i class="fa-regular fa-heart fa-flip"></i> 
                             {% endif %}                                                                                                                                   
                         </button>
+                        <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
                     </form>                       
                 </div>
             </div>

@@ -60,7 +60,7 @@
                                     </a> 
                                     <!-- Wishlist Button -->
                                     <form class="product-links" method="POST" action="{% url 'wishlist-add' product.product.id %}">
-                                        {% csrf_token %}
+                                        {% csrf_token %}                                        
                                         <button type="submit" name="wishlist" value="submit" aria-label="add to wishlist">
                                             {% if product.is_in_wishlist %} 
                                                 <i class="fa-solid fa-heart text-danger"></i>                                            
@@ -68,6 +68,7 @@
                                                 <i class="fa-regular fa-heart fa-flip"></i>                                            
                                             {% endif %}                                                                                                                                   
                                         </button>
+                                        <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
                                     </form>
                                 </div>
                                 <!-- Product name -->

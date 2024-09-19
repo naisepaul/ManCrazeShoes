@@ -18,14 +18,14 @@ def all_products(request):
     new_arrivals = None    
 
     wishlist_products = []  # List of products in the user's wishlist
-    
+    wishlist_count = 0
     # If the user is authenticated, get their wishlist products
     if request.user.is_authenticated:
         profile = request.user.userprofile
         wishlist = Wishlist.objects.filter(user=profile).prefetch_related('products').first()
         if wishlist:
             wishlist_products = wishlist.products.all()  # Get the products in the user's wishlist
-       
+            wishlist_count = wishlist.products.count()
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -75,6 +75,7 @@ def all_products(request):
     context = {
         'products': products,
         'products_with_wishlist_status': products_with_wishlist_status,
+        'wishlist_count': wishlist_count,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
@@ -177,7 +178,7 @@ def delete_product(request, product_id):
 @login_required
 def my_wishlist(request, pk):
     ''' Renders wishlist page '''
-    profile = get_object_or_404(UserProfile, id=pk)
+    profile = request.user.userprofile
     wishlist = Wishlist.objects.filter(user=profile).order_by('-created')
     
     context = {

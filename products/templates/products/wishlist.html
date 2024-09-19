@@ -9,55 +9,31 @@
     </div>
 {% endblock %}
 
-
 {% block content %}
-    <div class ="overlay">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col text-center mt-3">
-                    <h2 class="logo-font">My wishlist</h2>
-                    {% if wishlist %}
-                            {% for item in wishlist %}
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3"></div>
-                                <div class="card h-100 border-2">
-                                     <!-- Product Image -->                                    
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid" style="cursor: pointer;" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                    </a>  
-                                    <form class="product-links" method="POST" action="{% url 'wishlist-add' item.product.id %}">
-                                        {% csrf_token %}
-                                        <button type="submit" name="wishlist" value="submit" aria-label="add to wishlist">
-                                            <i class="fa fa-heart"></i>
-                                        </button>
-                                        <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
-                                    </form>
-                                                                                                            
-                                                                            
-                                    <!-- Product name -->                 
-                                    <div class="card-body pb-0">
-                                        <p class="mb-0">{{ product.name }}</p>                                        
-                                    </div>
-                                    <div class="card-footer bg-white pt-0 border-0 text-left">
-                                        <div class="row">
-                                            <div class="col">
-                                                 <!-- Product price -->
-                                                <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
-                                                 <!-- Product category -->
-                                                {% if product.category %}
-                                                <p class="small mt-1 mb-0">
-                                                    <a class="text-muted" href="{% url 'products' %}?category={{ product.category }}">
-                                                        <i class="fa-solid fa-shoe-prints"></i> {{ product.category }}
-                                                    </a>
-                                                </p>
-                                                {% endif %}
-                                                {% if request.user.is_superuser %}
-                                                    <small class="ml-3">
-                                                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>                                                        
-                                                    </small>
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<div class="container">
+    <h1>My Wishlist</h1>
+    
+    {% if wishlist and wishlist.products.exists %}
+        <div class="wishlist-items">
+            {% for product in wishlist.products.all %}
+                <div class="wishlist-item">
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="wishlist-product-image">
+                    </a>
+                    <div class="wishlist-product-info">
+                        <h3><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h3>
+                        <p>Price: {{ product.price }}</p>
+                        <form action="{% url 'wishlist_add' product.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="redirect_url" value="{% url 'my_wishlist' request.user.userprofile.id %}">
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Your wishlist is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
