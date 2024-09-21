@@ -60,14 +60,25 @@
                                         <!-- dafault value for the input -->
                                         <input type="text" id="selectedSize" class="form-control" name="size" readonly
                                         value="{% if productvariant %}{{ productvariant.2.size }}{% endif %}">                                         
-                                    </div>                                    
+                                    </div>                                                                                                                                                                                       
                                     <div class="circle-container">  
                                         {% for variant in productvariant %}
-                                           <!-- <span id="stock_{{ variant.size }}">{{ variant.stock }}</span> -->
-                                           <div class="circle selectable" name="size" data-value="{{ variant.size }}">{{ variant.size }}</div>                                                                                     
-                                                        
-                                        {% endfor %}                                         
-                                    </div>                                                                                                                
+                                            <div class="circle-item">                                                
+                                                <div class="circle selectable1 {% if variant.stock == 0 %} disabled {% else %} selectable {% endif %}" 
+                                                    name="size" data-value="{{ variant.size }}"
+                                                    {% if variant.stock == 0 %} aria-disabled="true" {% endif %}>
+                                                    {{ variant.size }}
+                                                </div>                                                     
+                                                <div class="stock-status {% if variant.stock > 0 %} in-stock {% else %} out-of-stock {% endif %}">
+                                                    {% if variant.stock > 0 %}
+                                                        {{ variant.stock }}
+                                                    {% else %}
+                                                        {{ variant.stock }}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div> 
                             
