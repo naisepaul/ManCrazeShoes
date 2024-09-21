@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
+    <div class="header-container">
         <div class="row">
             <div class="col"></div>
         </div>
@@ -83,7 +83,7 @@
                                             <!-- Product category -->
                                             {% if product.product.category %}
                                             <p class="small mt-1 mb-0">
-                                                <a class="text-muted" href="{% url 'products' %}?category={{ product.product.category }}">
+                                                <a class="text-muted" href="{% url 'products' %}?category={{ product.product.category}}">
                                                     <i class="fa-solid fa-shoe-prints"></i> {{ product.product.category }}
                                                 </a>
                                             </p>

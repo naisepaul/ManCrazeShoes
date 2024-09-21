@@ -10,8 +10,10 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="container">
-    <h1>My Wishlist</h1>    
+    <hr>
+    <h1>My Wishlist</h1>      
     {% if wishlist and wishlist.products.exists %}
         <!-- Wrap items in a row -->
         <div class="row wishlist-items d-flex align-items-center">
@@ -28,9 +30,9 @@
                                 {% csrf_token %}                                        
                                 <button type="submit" name="wishlist" value="submit" aria-label="add to wishlist">
                                     {% if wishlist %} 
-                                        <i class="fa-solid fa-heart text-danger"></i>  <!-- Filled heart when product is in wishlist -->                                          
+                                        <i class="fa-solid fa-heart text-danger"></i>  
                                     {% else %}
-                                        <i class="fa-regular fa-heart fa-flip"></i>  <!-- Empty heart if not in wishlist -->                                        
+                                        <i class="fa-regular fa-heart fa-flip"></i>                                        
                                     {% endif %}                                                                                                                                   
                                 </button>
                                 <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
@@ -68,6 +70,8 @@
         </div>
     {% else %}
         <p>Your wishlist is empty.</p>
-    {% endif %}
+        <p></p>
+    {% endif %}    
 </div>
+<hr>
 {% endblock %}
