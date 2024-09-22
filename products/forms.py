@@ -19,6 +19,20 @@ class ProductVariantForm(forms.ModelForm):
     class Meta:
         model = ProductVariant
         fields = ['size', 'stock']
+
+        widgets = {
+            'size': forms.Select(attrs={'class': 'form-control'}),
+            'stock': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
    
-ProductVariantFormSet = modelformset_factory(ProductVariant, form=ProductVariantForm, extra=6)
+ProductVariantFormSetAdd = modelformset_factory(
+    ProductVariant, 
+    form=ProductVariantForm, 
+    extra=6,  
+)
+ProductVariantFormSetEdit = modelformset_factory(
+    ProductVariant, 
+    form=ProductVariantForm, 
+    extra=0,  # Show only existing variants    
+)
 

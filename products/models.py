@@ -51,8 +51,8 @@ class ProductVariant(models.Model):
     stock = models.IntegerField(validators=[MinValueValidator(0),
                                 MaxValueValidator(20)])
 
-    def __str__(self):
-        return f"{self.product.name} - {self.size}"
+    class Meta:
+        unique_together = ('product', 'size')
 
 
 class Wishlist(models.Model):

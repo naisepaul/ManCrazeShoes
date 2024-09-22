@@ -21,83 +21,49 @@
         </div>
         
         <div class="login-box">
-            <!-- Product Form -->
-            <form method="POST" action="{% url 'edit_product' product.id %}" class="form mt-3" id="product-form" enctype="multipart/form-data">
-                {% csrf_token %}
-                
-                <!-- Category -->
-                {{ form.category.label_tag }}
-                {{ form.category }}
-                {% for error in form.category.errors  %}
-                    <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                {% endfor %}
-                <br>
-                <!-- Name -->
-                {{ form.name.label_tag }}
-                {{ form.name }}
-                {% for error in form.name.errors  %}
-                    <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                {% endfor %}
-                
-                <!-- Description -->
-                {{ form.description.label_tag }}
-                {{ form.description }}
-                {% for error in form.description.errors  %}
-                    <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                {% endfor %}
-                
-                <!-- Price -->
-                {{ form.price.label_tag }}
-                {{ form.price }}
-                {% for error in form.price.errors  %}
-                    <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                {% endfor %}
-                <br>
-                <!-- Is Featured? -->
-                <span class="d-flex mt-4">
-                    {{ form.is_featured }}
-                    <span class="ms-3 checkbox-label d-flex align-items-end">{{ form.is_featured.label_tag }}</span>
-                </span>
-                {% for error in form.is_featured.errors  %}
-                    <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                {% endfor %}
-
-                <!-- Delivery Charge? -->
-                <span class="d-flex mt-4 mb-2">
-                    {{ form.delivery_charge }}
-                    <span class="ms-3 checkbox-label d-flex align-items-end">{{ form.delivery_charge.label_tag }}</span>
-                </span>
-                {% for error in form.delivery_charge.errors  %}
-                    <span class="text-ib-warning weight-semibold ib-lh-2">{{error}}</span>
-                {% endfor %}
-
-                <!-- Image Selection -->
-                <div class="mt-4 mb-2">
-                    <!-- <p class="p-label-replace d-inline">Product Image:</p>                     -->
-                    {{ form.image }}
-                </div>
-                                
-                <!-- General Form Errors -->
-                {% if form.errors %}
-                    {% for error in form.non_field_errors %}
-                        <span class="text-ib-warning weight-semibold d-block mb-1">{{error}}</span>
-                    {% endfor %}
-                {% endif %}
-
-                <!-- Buttons -->
-                <div class="mt-5 d-flex justify-content-end">
-
+            <!-- Edit Product Form -->
+            <form method="POST" enctype="multipart/form-data">                
+                {% csrf_token %}                
+                <!-- Product Details Column -->            
+                <h2>Product Details</h2>
+                {{ product_form.as_p }}           
+                                    
+                <!-- Product Variants Column -->
+            
+                <h2>Product Variants</h2>
+                {{ variant_formset.management_form }}
+                {% for form in variant_formset %}
+                    <div class="variant-form">
+                        <!-- Render any non-field errors for the form -->
+                        {{ form.non_field_errors }}
+                        {{ form.id }} 
+                        <!-- Render the size field -->
+                        <div class="form-group">
+                            {{ form.size.label_tag }}
+                            {{ form.size }}
+                            {{ form.size.errors }}
+                        </div>
+                        <!-- Render the stock field -->
+                        <div class="form-group">
+                            {{ form.stock.label_tag }}
+                            {{ form.stock }}
+                            {{ form.stock.errors }}
+                        </div>                       
+                    </div>
+                {% endfor %}    
+                <!-- Submit and Cancel Buttons -->
+                <div class="mt-5 d-flex justify-content-end">                                   
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary me-2">
+                        Save Changes
+                    </button>
+                    
                     <!-- Cancel Button -->
                     <a href="{% url 'products' %}" class="btn btn-danger">
-                        <p class="d-inline">CANCEL</p>
-                    </a>
-                
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary">
-                        UPDATE PRODUCT
-                    </button>
-                </div>
-            </form>
+                        <p class="d-inline">Cancel</p>
+                    </a> 
+                </div>                
+            </form>            
         </div>
     </div>
 {% endblock %}

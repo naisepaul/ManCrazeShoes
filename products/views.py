@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Product, Category, ProductVariant, Wishlist
-from .forms import ProductForm, ProductVariantFormSet
+from .forms import ProductForm, ProductVariantFormSetAdd, ProductVariantFormSetEdit
 # Create your views here.
 
 
@@ -107,25 +107,36 @@ def product_detail(request, product_id):
 
 @login_required
 def add_product(request):
+    """ add a product in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+    product = None 
     if request.method == 'POST':
-        product_form = ProductForm(request.POST, request.FILES)
-        variant_formset = ProductVariantFormSet(request.POST)
+        product_form = ProductForm(request.POST, request.FILES)        
+        variant_formset = ProductVariantFormSetAdd(request.POST, queryset=ProductVariant.objects.none())
 
         if product_form.is_valid() and variant_formset.is_valid():
-            product = product_form.save()  # Save the Product
+            valid_variants = [form for form in variant_formset if form.cleaned_data.get('size')]
+            if len(valid_variants) == 6:
+                # Save the product
+                product = product_form.save()
             
-            # Iterate through each variant form
-            for variant in variant_formset:
-                if variant.cleaned_data and variant.cleaned_data['size']:  
-                    variant_instance = variant.save(commit=False) 
-                    variant_instance.product = product  
+                 # Iterate through each variant form
+                for form in valid_variants:
+                    variant_instance = form.save(commit=False)
+                    variant_instance.product = product 
                     variant_instance.save()
-            messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', args=[product.id]))
+                messages.success(request, 'Successfully added product!')
+                return redirect(reverse('product_detail', args=[product.id]))
+            else:
+                messages.error(request, 'Please provide exactly 6 variants.')
+        else:
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
 
     else:
         product_form = ProductForm()
-        variant_formset = ProductVariantFormSet(queryset=ProductVariant.objects.none())
+        variant_formset = ProductVariantFormSetAdd(queryset=ProductVariant.objects.none())
 
     return render(request, 'products/add_product.html', {
         'product_form': product_form,
@@ -135,34 +146,57 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ Edit a product in the store """
+    """ Edit a product and its variants in the store """
+    
+    # Only allow superusers (store owners) to edit products
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
+    
+    # Handle the POST request when form is submitted
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES, instance=product)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully updated product!')
+        # Load the product form with POST data and files 
+        product_form = ProductForm(request.POST, request.FILES, instance=product)
+        
+        # Load the variant formset with POST data and existing product variants
+        variant_formset = ProductVariantFormSetEdit(request.POST, queryset=ProductVariant.objects.filter(product=product))
+
+        # Check if both the product form and the variants formset are valid
+        if product_form.is_valid() and variant_formset.is_valid():
+            # Save the updated product
+            product = product_form.save()
+            
+            for form in variant_formset:
+                if form.cleaned_data and form.cleaned_data.get('size'):
+                    variant_instance = form.save(commit=False)
+                    variant_instance.product = product
+                    variant_instance.save()                 
+            messages.success(request, 'Successfully updated product and variants!')
             return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(request,
-                           f'Failed to update product. '
-                           f'Please ensure the form is valid.')
+        else:            
+            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
     else:
-        form = ProductForm(instance=product)
+        # Initial GET request, load the product form with existing product data
+        product_form = ProductForm(instance=product)
+        
+        # Load the variant formset with existing product variants
+        variant_formset = ProductVariantFormSetEdit(queryset=ProductVariant.objects.filter(product=product))
+        
+        # message about editing the product
         messages.info(request, f'You are editing {product.name}')
 
+    # Render the edit product template with product form and variant formset
     template = 'products/edit_product.html'
     context = {
-        'form': form,
+        'product_form': product_form,
+        'variant_formset': variant_formset,
         'product': product,
     }
-
     return render(request, template, context)
 
-
+    
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
