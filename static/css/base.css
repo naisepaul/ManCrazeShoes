@@ -167,6 +167,7 @@ a.category-badge > span.badge:hover {
 .selected {
     background-color: #ffd700; /* Yellow background color for selected circle */
     border:1px solid red;
+    color: lightseagreen;
 }
 
 #selectedSize {

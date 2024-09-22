@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Product, Category, ProductVariant, Wishlist
-from .forms import ProductForm
+from .forms import ProductForm, ProductVariantFormSet
 # Create your views here.
 
 
@@ -107,30 +107,30 @@ def product_detail(request, product_id):
 
 @login_required
 def add_product(request):
-    """ Add a product to the store """
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
-
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            product = form.save()
+        product_form = ProductForm(request.POST, request.FILES)
+        variant_formset = ProductVariantFormSet(request.POST)
+
+        if product_form.is_valid() and variant_formset.is_valid():
+            product = product_form.save()  # Save the Product
+            
+            # Iterate through each variant form
+            for variant in variant_formset:
+                if variant.cleaned_data and variant.cleaned_data['size']:  
+                    variant_instance = variant.save(commit=False) 
+                    variant_instance.product = product  
+                    variant_instance.save()
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(request,
-                           f'Failed to add product. '
-                           f'Please ensure the form is valid.')
+
     else:
-        form = ProductForm()
+        product_form = ProductForm()
+        variant_formset = ProductVariantFormSet(queryset=ProductVariant.objects.none())
 
-    template = 'products/add_product.html'
-    context = {
-        'form': form,
-    }
-
-    return render(request, template, context)
+    return render(request, 'products/add_product.html', {
+        'product_form': product_form,
+        'variant_formset': variant_formset,
+    })
 
 
 @login_required
@@ -204,3 +204,20 @@ def wishlist_add(request, pk):
         messages.success(request, f'{product.name} added to your wishlist')  
     return redirect(redirect_url)
 
+
+def place_order(request):
+    if request.method == 'POST':
+        size = request.POST.get('size')
+        variant = get_object_or_404(ProductVariant, size=size)
+        
+        # Reduce stock only if it's available
+        if variant.stock > 0:
+            variant.stock -= 1  # Decrease stock by 1 (or the ordered quantity)
+            variant.save()
+            return redirect('products/product_detail', product_id=variant.product.id)  # Redirect to the product page
+        else:
+            return render(request, 'products/product_detail.html', {
+                'error': 'Selected size is out of stock!',
+                'product': variant.product,
+                'productvariant': variant.product.productvariant_set.all()
+            })
