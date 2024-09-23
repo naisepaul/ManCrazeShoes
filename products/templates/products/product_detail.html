@@ -17,6 +17,7 @@
                     <a href="{{ product.image.url }}" target="_blank">
                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.category }} shoe image">
                     </a>
+                    <!-- wishlist -->
                     <form class="product-links" method="POST" action="{% url 'wishlist-add' product.id %}">
                         {% csrf_token %}
                         <button type="submit" name="wishlist" value="submit" aria-label="add to wishlist">
@@ -56,16 +57,15 @@
                             <div class="col-12">                                                            
                                 <div class="form-group w-70">
                                     <div class="size-text">
-                                        <p class="mt-3"><strong>Size:</strong></p>  
-                                        
+                                        <p class="mt-3"><strong>Size:</strong></p>                                          
                                         <input type="text" id="selectedSize" class="form-control" name="size" readonly
                                         value="{% if productvariant %}{{ productvariant.size }}{% endif %}">                                         
                                     </div>                                                                                                                                                                                       
                                     <div class="circle-container">  
                                         {% for variant in productvariant %}
                                             <div class="circle-item">                                                
-                                                <div class="circle selectable1 {% if variant.stock == 0 %} disabled {% else %} selectable {% endif %}" 
-                                                    name="size" data-value="{{ variant.size }}">
+                                                <div class="circle selectable {% if variant.stock == 0 %} disabled {% else %} selectable {% endif %}" 
+                                                    name="size" data-value="{{ variant.size }}" data-stock="{{ variant.stock }}">
                                                     {{ variant.size }}
                                                 </div>                                                     
                                                 <div class="stock-status {% if variant.stock > 0 %} in-stock {% else %} out-of-stock {% endif %}">
@@ -116,7 +116,7 @@
                                     </span>
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>                                
-                                <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag" id="add-to-bag-btn" disabled">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
@@ -131,4 +131,30 @@
 {{ block.super }}
 {% include 'products/includes/size_selector_script.html' %}
 {% include 'products/includes/quantity_input_script.html' %}
+
+<!-- Custom JavaScript to enable the Add to Bag button when a size is selected -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sizeElements = document.querySelectorAll('.circle.selectable');
+        const addToBagBtn = document.getElementById('add-to-bag-btn');
+        const sizeInput = document.getElementById('selectedSize');
+        
+        sizeElements.forEach(sizeElement => {
+            sizeElement.addEventListener('click', function() {
+                const selectedSize = this.getAttribute('data-value');
+                const stock = this.getAttribute('data-stock');
+                
+                // Set the selected size in the readonly input field
+                sizeInput.value = selectedSize;
+
+                // Enable the "Add to Bag" button
+                addToBagBtn.disabled = false;
+
+                // update the quantity input field's max value based on stock
+                const qtyInput = document.getElementById('id_qty_{{ product.id }}');
+                qtyInput.max = stock > 5 ? 5 : stock;
+            });
+        });
+    });
+</script>
 {% endblock %}
