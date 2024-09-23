@@ -20,6 +20,10 @@ def add_to_bag(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     size = request.POST.get('size')
     bag = request.session.get('bag', {})
+    if not size:
+        messages.error(request, 'Please select a size before adding to your bag.')
+        return redirect(redirect_url)
+
     if size:
         if item_id in list(bag.keys()):
             if size in bag[item_id]['items_by_size'].keys():
