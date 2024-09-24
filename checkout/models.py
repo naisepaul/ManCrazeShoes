@@ -87,6 +87,23 @@ class OrderLineItem(models.Model):
         and update the order total.
         """
         self.lineitem_total = self.product.price * self.quantity
+
+        # # Reduce stock for product variant
+        # if self.size:
+            
+        #     product_variant = ProductVariant.objects.get(
+        #         product=self.product,
+        #         size=self.size
+        #     )
+            
+        #     # Ensure stock is sufficient
+        #     if product_variant.stock >= self.quantity:
+        #         product_variant.stock -= self.quantity
+        #         product_variant.save()
+        #     else:
+        #         raise ValueError(f"Insufficient stock for {self.product.name} size {self.size}")
+            
+            
         super().save(*args, **kwargs)
 
     def __str__(self):

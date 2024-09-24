@@ -238,20 +238,3 @@ def wishlist_add(request, pk):
         messages.success(request, f'{product.name} added to your wishlist')  
     return redirect(redirect_url)
 
-
-def place_order(request):
-    if request.method == 'POST':
-        size = request.POST.get('size')
-        variant = get_object_or_404(ProductVariant, size=size)
-        
-        # Reduce stock only if it's available
-        if variant.stock > 0:
-            variant.stock -= 1  # Decrease stock by 1 (or the ordered quantity)
-            variant.save()
-            return redirect('products/product_detail', product_id=variant.product.id)  # Redirect to the product page
-        else:
-            return render(request, 'products/product_detail.html', {
-                'error': 'Selected size is out of stock!',
-                'product': variant.product,
-                'productvariant': variant.product.productvariant_set.all()
-            })

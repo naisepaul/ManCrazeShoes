@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from products.models import Product
+from products.models import Product, ProductVariant
 
 # Create your views here.
 
@@ -61,6 +61,17 @@ def adjust_bag(request, item_id):
     bag = request.session.get('bag', {})
 
     if size:
+        try:
+            variant = ProductVariant.objects.get(product=product, size=size)
+            available_stock = variant.stock
+        except ProductVariant.DoesNotExist:
+            messages.error(request, "The requested size is unavailable.")
+            return redirect(reverse('view_bag'))
+
+        if quantity > available_stock:
+            messages.error(request, f"Only {available_stock} items available in size {size}.")
+            return redirect(reverse('view_bag'))
+
         if quantity > 0:
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(request, f'Updated size {size} {product.name} '
@@ -73,6 +84,12 @@ def adjust_bag(request, item_id):
             messages.success(request, f'Removed size {size} {product.name} '
                              f'from your bag')
     else:
+        available_stock = product.stock
+
+        if quantity > available_stock:
+            messages.error(request, f"Only {available_stock} items available for {product.name}.")
+            return redirect(reverse('view_bag'))
+
         if quantity > 0:
             bag[item_id] = quantity
             messages.success(request, f'Updated {product.name} quantity to '
