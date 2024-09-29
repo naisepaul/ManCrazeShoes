@@ -450,7 +450,7 @@ a.category-badge > span.badge:hover {
 
     .header-container {
         padding-top: 164px;
-    }
+    }    
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
@@ -512,12 +512,17 @@ a.category-badge > span.badge:hover {
         width: 100%;
     }
 
-    .product-name {
-        font-size: 8 px; /* Smaller font size for mobile */
+    .product-info {
+        font-size: 10px; /* Smaller font size for mobile */
     }
 
     .product-price {
         font-size: 10px; /* Smaller font size for price on mobile */
         font-weight: lighter;
+    }
+    .decrement-qty,
+    .increment-qty,
+    .qty_input {
+        font-size: 8px;
     }
 }
