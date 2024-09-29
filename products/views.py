@@ -24,11 +24,8 @@ def all_products(request):
     # If the user is authenticated, get their wishlist products
     if request.user.is_authenticated:
         profile = request.user.userprofile
-        wishlist = (Wishlist.objects(
-            .filter(user=profile)
-            .prefetch_related('products')
-            .first())
-        )
+        wishlist = (Wishlist.objects.filter(user=profile).prefetch_related('products').first())
+        
         if wishlist:
             # Get the products in the user's wishlist
             wishlist_products = wishlist.products.all()
