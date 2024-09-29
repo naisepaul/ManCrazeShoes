@@ -499,7 +499,7 @@ a.category-badge > span.badge:hover {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 576px) {
     #mc_embed_signup {
         padding: 10px;
     }
@@ -510,5 +510,14 @@ a.category-badge > span.badge:hover {
 
     .clear.foot .button {
         width: 100%;
+    }
+
+    .product-name {
+        font-size: 8 px; /* Smaller font size for mobile */
+    }
+
+    .product-price {
+        font-size: 10px; /* Smaller font size for price on mobile */
+        font-weight: lighter;
     }
 }

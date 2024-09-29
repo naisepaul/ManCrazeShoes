@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h2>Are you sure you want to delete this product?</h2>
+                        <div>
+                            <h4 class="text-danger">You are about to delete this product.
+                                <br>
+                                This action cannot be undone.</h4>
+                        </div>
+                    </div>
+                    <div class="card-body custom-body">
+                        <form method="post" action="{% url 'delete_product' product.id %}">
+                            {% csrf_token %}
+                            <div class="text-center mb-3"> 
+                                <button type="submit" class="btn btn-danger mr-2">Delete</button>
+                                <a href="{% url 'products' %}" class="btn btn-primary">Go Back</a>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>        
+
+{% endblock %}
