@@ -24,14 +24,14 @@ def all_products(request):
     # If the user is authenticated, get their wishlist products
     if request.user.is_authenticated:
         profile = request.user.userprofile
-        wishlist = (Wishlist.objects
+        wishlist = (Wishlist.objects(
             .filter(user=profile)
             .prefetch_related('products')
-            .first()
+            .first())
         )
         if wishlist:
             # Get the products in the user's wishlist
-            wishlist_products = wishlist.products.all()  
+            wishlist_products = wishlist.products.all()
             wishlist_count = wishlist.products.count()
     if request.GET:
         if 'sort' in request.GET:
@@ -65,16 +65,20 @@ def all_products(request):
                 )
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (
+                Q(name__icontains=query) | Q(description__icontains=query))
             # | Q(price__icontains=query)
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
-    
+
     # Check if each product is in the user's wishlist
     products_with_wishlist_status = []
     for product in products:
-        is_in_wishlist = product in wishlist_products if request.user.is_authenticated else False
+        is_in_wishlist = (
+            product in wishlist_products
+            if request.user.is_authenticated else False
+        )
         products_with_wishlist_status.append({
             'product': product,
             'is_in_wishlist': is_in_wishlist,
@@ -87,7 +91,7 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
-        'new_arrivals': new_arrivals,        
+        'new_arrivals': new_arrivals,
     }
 
     return render(request, 'products/products.html', context)
@@ -128,7 +132,10 @@ def add_product(request):
         )
 
         if product_form.is_valid() and variant_formset.is_valid():
-            valid_variants = [form for form in variant_formset if form.cleaned_data.get('size')]
+            valid_variants = (
+                [form for form in variant_formset
+                    if form.cleaned_data.get('size')]
+            )
             if len(valid_variants) == 6:
                 # Save the product
                 product = product_form.save()

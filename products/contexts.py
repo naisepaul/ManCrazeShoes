@@ -1,5 +1,6 @@
 from .models import Wishlist
 
+
 def wishlist_count(request):
     """ Context processor to add wishlist count to all templates """
     if request.user.is_authenticated:

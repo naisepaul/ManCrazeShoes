@@ -10,7 +10,7 @@ def index(request):
     recent_items = Product.objects.order_by('-created_at')[:6]
 
     context = {
-        'recent_items': recent_items,    
+        'recent_items': recent_items,
     }
     return render(request, 'home/index.html', context)
 
