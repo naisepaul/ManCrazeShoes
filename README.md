@@ -66,6 +66,7 @@ Welcome to the [ManCrazeShoes](https://mancrazeshoes-4c1185db9ef9.herokuapp.com/
 
 - To provide users with a place to purchase shoes for men of their interest.
 - To provide the users the ability to search and browse shoes of different categories.
+- To provide the users with the ability to save shoes to their wishlist
 - To provide the users with the ability to check their order history.
 - To provide the users with the most recents shoes from the company.
 
@@ -76,9 +77,13 @@ This project seeks to create an e-commerce platform dedicated to providing custo
 - Create an account and log in securely.
 - Reset their password if necessary.
 - Browse, search, and filter through available shoes.
+- View product stock levels
 - Add desired shoes to their shopping cart.
 - Adjust quantities within their shopping cart.
 - Remove items from their shopping cart as needed.
+- Save products to wishlist
+- Update personal information
+- View past orders
 - Safely complete transactions using the integrated Stripe payment system.
 - Access a comprehensive overview of past orders for reference and tracking purposes.
 
@@ -136,11 +141,12 @@ Key Features:
 13. As a registered user I want to be able to edit the cart so that I can control the quantity of items I want to purchase.
 14. As a registered user I want to be able to remove the items from the cart so that it is not available for other users.
 15. As a user, I want to be able to securely make payments using Stripe so that I can complete my purchases on Mencrazeshoes with confidence..
-16. As an administrator, I want to have access to an admin dashboard so that I can monitor and view simple statistics related to the orders made on this site.
-17. As an administrator, I want to be able to add new products to the website so that I can expand the product catalog
-18. As an administrator, I want to be able to edit existing products on the website so that I can update and manage the product catalog.
-19. As an administrator, I want to be able to remove products from the website so that I can manage the product catalog.
-20. As a User I want to be able to complete the checkout process for my shopping cart so that I can purchase the items I've added to my cart.
+16. As a authenticated user, I want to be able to save shoes to my wishlist so that I can revisit and consider purchasing them later on.
+17. As an administrator, I want to have access to an admin dashboard so that I can monitor and view simple statistics related to the orders made on this site.
+18. As an administrator, I want to be able to add new products to the website so that I can expand the product catalog
+19. As an administrator, I want to be able to edit existing products on the website so that I can update and manage the product catalog.
+20. As an administrator, I want to be able to remove products from the website so that I can manage the product catalog.
+21. As a User I want to be able to complete the checkout process for my shopping cart so that I can purchase the items I've added to my cart.
 
 [Back to Table of contents](#table-of-contents)
 
@@ -172,6 +178,7 @@ The below colours are the main colours.
 
 6. OrderLineItem This model is connected to the Order and Product as a ForeignKey. It is created for each item in the order
 7. ProductVariant: This model is connected with shoe size and stock for each size.
+8. Wishlist: This model stores the products to a wishlist for authenticated users. It is connected to UserProfile as a ForeignKeyand Products models as a manytomanyfield
 
 ### Fonts
 
@@ -276,20 +283,20 @@ The products displayed on the home page are the most recently added 6 products.
 
 The all product page renders all products to the user. They have the option to sort the products by category and price. If we want we can select by category like formal, casual and sandals. And there is small button on the right bottom to go to the top.
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715775695/product-page_autnwo.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727643939/product-page_ieex1y.png)
 
 #### Product Card
 
-The product card consist of an image of the shoe, price and name. When we click on the image it goes to the product details page.
+The product card consist of an image of the shoe, price, name and heart button for wishlist. When we click on the image it goes to the product details page.
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715776299/product-card_ceanhx.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727643565/product-card_ab3vec.png)
 
 #### Single Products Page
 
-On the page's left side, a product image is displayed. On the right side, the most important information about the product is displayed. This includes the name, price, description, shoe size  and add to cart button with quantity dropdown. 
+On the page's left side, a product image is displayed. On the right side, the most important information about the product is displayed. This includes the name, price, description, shoe size, stock details display on the right side of the size, if there is no stock customer cant click on that size and add to cart button with quantity dropdown. 
 Implementing stock levels in the product model, allowed for adding custom logic when it comes to adding items to the shopping bag. The user should not be able to add to their cart a higher quantity(5 maximum).
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715777126/single-product-page_zv5ifj.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727642252/single-product-page_nhcwbe.png)
 
 ### My Profile Page
 
@@ -305,29 +312,42 @@ This page displays the past orders of this user.
 
 ![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715778176/profile-order_pkxlme.png)
 
+- Wishlist
+
+This page displays the wishlist items added
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727643056/wishlist_cgdquj.png)
+
+
 ### Product Management
 
 This section can be accessed only by admin or superuser. This section allows admins to add, edit and delete shoes without the need of the built in Django admin.
 
 - Products view for super user
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715787400/admin-product-view_lwaxit.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727643056/admin-product-view_xre3wy.png)
 
 - single product view for super user
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715787400/admin-product-view1_ffihpz.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727643056/admin-product-view1_erg4np.png)
 
 #### Add Products
 
 This page renders the product creation form and all required fields to add an item to the database. 
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715787400/add-product_emn0en.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727643300/add-product_x6zppo.png)
 
 #### Edit Product
 
 This page renders the product form prefilled with the existing data in the database. It allows the admin to modify the details of the products.
 
-![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1715787400/edit-product_myityq.png)
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727643300/edit-product_etw0q0.png)
+
+#### Delete review confirmation
+
+It allows the admin to delete the details of the products.
+
+![Responsive view](https://res.cloudinary.com/dmhdrvehj/image/upload/v1727643056/delete-product_wbgiib.png)
 
 [Back to Table of contents](#table-of-contents)
 
