@@ -40,7 +40,7 @@ def checkout(request):
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
-        
+
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -62,11 +62,12 @@ def checkout(request):
                 order.save()
                 for item_id, item_data in bag.items():
                     try:
-                        product = Product.objects.get(id=item_id)                           
+                        product = Product.objects.get(id=item_id)
                         if isinstance(item_data, int):
                             quantity = item_data
-                            product_variant = get_object_or_404(ProductVariant, product=product)                            
-                            if quantity > product_variant.stock:                                
+                            product_variant = get_object_or_404(
+                                ProductVariant, product=product)
+                            if quantity > product_variant.stock:
                                 raise ValueError("Insufficient stock.")
 
                             # Reduce the stock
@@ -82,16 +83,19 @@ def checkout(request):
                             order_line_item.save()
                         else:
                             for size, quantity in (
-                                item_data['items_by_size'].items()):
-                                product_variant = get_object_or_404(ProductVariant, product=product, size=size)
-                                # Ensure stock is sufficient for the specific variant
+                               item_data['items_by_size'].items()
+                            ):
+                                product_variant = get_object_or_404(
+                                    ProductVariant, product=product, size=size
+                                )
+                                # stock is sufficient for the specific variant
                                 if quantity > product_variant.stock:
-                                    raise ValueError(f"Insufficient stock for {product.name}. Only {product_variant.stock} left.")
+                                    raise ValueError(f"Insufficient stock for ({product.name}. Only {product_variant.stock} left.")
 
                                 # Reduce stock from the variant
                                 product_variant.stock -= quantity
                                 product_variant.save()
-                                
+
                                 order_line_item = OrderLineItem(
                                     order=order,
                                     product=product,
@@ -99,7 +103,7 @@ def checkout(request):
                                     size=size,
                                 )
                                 order_line_item.save()
-                            
+
                     except Product.DoesNotExist:
                         messages.error(request, (
                             f"One of the products in your bag wasn't "
@@ -109,11 +113,14 @@ def checkout(request):
                         return redirect(reverse('view_bag'))
 
                     except ValueError as e:
-                        messages.error(request, str(e))  # Inform the user about stock issues
+                        # Inform the user about stock issues
+                        messages.error(request, str(e))
                         order.delete()  # Clean up the partially saved order
                         return redirect(reverse('view_bag'))
                     except Exception as e:
-                        messages.error(request, 'An error occurred during checkout. Please try again.')
+                        messages.error(request, (
+                            'An error during checkout. Please try again.')
+                        )
                         order.delete()  # Clean up the partially saved order
                         return redirect(reverse('view_bag'))
                 request.session['save_info'] = 'save-info' in request.POST
@@ -126,8 +133,9 @@ def checkout(request):
 
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request,
-                           f"There's nothing in your bag at the moment")
+            messages.error(request, (
+                "There's nothing in your bag at the moment")
+            )
             return redirect(reverse('products'))
 
         for item_id, item_data in bag.items():
@@ -146,11 +154,15 @@ def checkout(request):
                             raise ValueError(f"Insufficient stock for {product.name} (Size: {size}). Only {product_variant.stock} left.")
 
             except ValueError as e:
-                messages.error(request, str(e))  # Inform the user about stock issues
+                # Inform the user about stock issues
+                messages.error(request, str(e))
                 return redirect(reverse('view_bag'))
 
             except Product.DoesNotExist:
-                messages.error(request, f"Product {product.name} was not found in our database. Please try again.")
+                messages.error(request, (
+                    f"Product {product.name} was not found in our database."
+                    f"Please try again.")
+                )
                 return redirect(reverse('view_bag'))
 
         current_bag = bag_contents(request)

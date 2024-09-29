@@ -2,6 +2,7 @@ from django import forms
 from django.forms import modelformset_factory
 from .models import Product, ProductVariant
 
+
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -24,15 +25,15 @@ class ProductVariantForm(forms.ModelForm):
             'size': forms.Select(attrs={'class': 'form-control'}),
             'stock': forms.NumberInput(attrs={'class': 'form-control'}),
         }
-   
+
+
 ProductVariantFormSetAdd = modelformset_factory(
-    ProductVariant, 
-    form=ProductVariantForm, 
-    extra=6,  
+    ProductVariant,
+    form=ProductVariantForm,
+    extra=6,
 )
 ProductVariantFormSetEdit = modelformset_factory(
-    ProductVariant, 
-    form=ProductVariantForm, 
-    extra=0,  # Show only existing variants    
+    ProductVariant,
+    form=ProductVariantForm,
+    extra=0,  # Show only existing variants
 )
-

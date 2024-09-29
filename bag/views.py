@@ -21,7 +21,9 @@ def add_to_bag(request, item_id):
     size = request.POST.get('size')
     bag = request.session.get('bag', {})
     if not size:
-        messages.error(request, 'Please select a size before adding to your bag.')
+        messages.error(request, (
+            'Please select a size before adding to your bag.')
+        )
         return redirect(redirect_url)
 
     if size:
@@ -69,7 +71,9 @@ def adjust_bag(request, item_id):
             return redirect(reverse('view_bag'))
 
         if quantity > available_stock:
-            messages.error(request, f"Only {available_stock} items available in size {size}.")
+            messages.error(request, (
+                f"Only {available_stock} items available in size {size}.")
+            )
             return redirect(reverse('view_bag'))
 
         if quantity > 0:
@@ -87,7 +91,9 @@ def adjust_bag(request, item_id):
         available_stock = product.stock
 
         if quantity > available_stock:
-            messages.error(request, f"Only {available_stock} items available for {product.name}.")
+            messages.error(request, (
+                f"Only {available_stock} items available for {product.name}.")
+            )
             return redirect(reverse('view_bag'))
 
         if quantity > 0:

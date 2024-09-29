@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from products.models import Product, Wishlist
+from products.models import Product
 
 # Create your views here.
 
@@ -8,9 +8,9 @@ def index(request):
     """ A view to return the index page """
 
     recent_items = Product.objects.order_by('-created_at')[:6]
-        
+
     context = {
-        'recent_items': recent_items,        
+        'recent_items': recent_items,    
     }
     return render(request, 'home/index.html', context)
 
